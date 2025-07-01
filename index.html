@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nitin Bansal - Principal Software Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        :root {
+            --accent1: #ff0080;
+            --accent2: #c200ff;
+            --glass-bg: rgba(0, 0, 0, 0.4);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --bg-color: #0a0a0a;
+            --text-color: #e0e0e0;
+        }
+        * { font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-color); }
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, var(--accent1) 0%, var(--accent2) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .glow {
+            box-shadow: 0 0 20px rgba(255,0,128,0.3);
+        }
+        .floating { animation: floating 6s ease-in-out infinite; }
+        @keyframes floating { 0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)} }
+        .fade-in { animation: fadeIn 1s ease-out forwards; opacity: 0; }
+        @keyframes fadeIn { to{opacity:1} }
+        .slide-up { animation: slideUp 0.8s ease-out forwards; opacity: 0; transform: translateY(30px); }
+        @keyframes slideUp { to{opacity:1; transform:translateY(0);} }
+        .skill-tag, .project-card, .nav-link { transition: all 0.3s ease; }
+        .skill-tag:hover { cursor: default; transform: translateY(-2px); box-shadow: 0 0px 10px rgba(255,0,128,0.4); }
+        .project-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+        .nav-link { position: relative; }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background: linear-gradient(135deg, var(--accent1) 0%, var(--accent2) 100%);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after { width: 100%; }
+        .particles { position: absolute; width: 100%; height: 100%; overflow: hidden; z-index: -1; }
+        .particle {
+            position: absolute;
+            background: rgba(255,0,128,0.1);
+            border-radius: 50%;
+            animation: particle-float 15s infinite linear;
+        }
+        @keyframes particle-float {
+            0% { transform: translateY(100vh); opacity: 0; }
+            10%, 90% { opacity: 1; }
+            100% { transform: translateY(-100px) translateX(100px); opacity: 0; }
+       }
+        footer p { word-wrap: break-word; }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+    <!-- Particles Background -->
+    <div class="particles">
+        <div class="particle" style="left:10%; width:4px; height:4px; animation-delay:0s;"></div>
+        <div class="particle" style="left:30%; width:6px; height:6px; animation-delay:3s;"></div>
+        <div class="particle" style="left:50%; width:3px; height:3px; animation-delay:6s;"></div>
+        <div class="particle" style="left:70%; width:5px; height:5px; animation-delay:9s;"></div>
+        <div class="particle" style="left:90%; width:4px; height:4px; animation-delay:12s;"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="top-nav" class="fixed top-0 w-full z-50 glass">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold gradient-text">Nitin Bansal</div>
+            <div id="mobile-menu" class="hidden md:flex flex-col md:flex-row items-center md:space-x-8 space-y-4 md:space-y-0">
+                <a href="#home" class="nav-link">Home</a><span class="md:hidden text-yellow-500"> • </span>
+                <a href="#about" class="nav-link">About</a><span class="md:hidden text-yellow-500"> • </span>
+                <a href="#experience" class="nav-link">Experience</a><span class="md:hidden text-yellow-500"> • </span>
+                <a href="#projects" class="nav-link">Personal Projects</a><span class="md:hidden text-yellow-500"> • </span>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <button id="mobile-menu-btn" class="md:hidden text-xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-40 flex items-center justify-center relative">
+        <div class="container mx-auto px-6 text-center">
+            <div class="fade-in" style="animation-delay:0.2s;">
+                <h1 class="text-6xl md:text-8xl font-bold mb-6 gradient-text">Nitin Bansal</h1>
+                <h2 class="text-2xl md:text-3xl text-gray-400 mb-8">Principal Software Engineer</h2>
+                <p class="text-lg md:text-xl text-gray-500 mb-12 max-w-3xl mx-auto">
+                    12+ years in distributed systems, technical architecture, and scalable solution design.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <div class="w-2/3 md:w-2/5 mt-4 mx-auto h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent"></div>
+
+    <!-- About Section -->
+    <section id="about" class="pt-20 max-w-6xl mx-auto">
+        <div class="flex justify-center px-6">
+            <div class="space-y-12">
+                <!-- Summary Block -->
+                <div class="text-xl slide-up text-center">
+                    <p class="text-gray-400 mb-6 leading-relaxed">
+                        14+ years of total experience, including 12+ years specializing in distributed systems, technical architecture, and scalable solution design. Strong background in end-to-end project execution and mentorship, with a track record of driving engineering excellence and delivering high-impact solutions.
+                    </p>
+                </div>
+
+                <!-- Technical Skills Block -->
+                <div class="slide-up text-center" style="animation-delay:0.2s;">
+                    <!-- <h3 class="text-2xl font-semibold mb-6 gradient-text">Technical Skills</h3> -->
+                    <div class="flex flex-wrap justify-center gap-3">
+                        <span class="skill-tag glass px-4 py-2 rounded-full text-sm">Java</span>
+                        <span class="skill-tag glass px-4 py-2 rounded-full text-sm">Node.js</span>
+                        <span class="skill-tag glass px-4 py-2 rounded-full text-sm">Python</span>
+                        <span class="skill-tag glass px-4 py-2 rounded-full text-sm">BigQuery</span>
+                        <span class="skill-tag glass px-4 py-2 rounded-full text-sm">Cassandra</span>
+                        <span class="skill-tag glass px-4 py-2 rounded-full text-sm">MySQL</span>
+                        <span class="skill-tag glass px-4 py-2 rounded-full text-sm">Redis</span>
+                        <span class="skill-tag glass px-4 py-2 rounded-full text-sm">Elasticsearch</span>
+                        <span class="skill-tag glass px-4 py-2 rounded-full text-sm">MongoDB</span>
+                        <span class="skill-tag glass px-4 py-2 rounded-full text-sm">Kafka</span>
+                        <span class="skill-tag glass px-4 py-2 rounded-full text-sm">Kubernetes</span>
+                        <span class="skill-tag glass px-4 py-2 rounded-full text-sm">Docker</span>
+                        <span class="skill-tag glass px-4 py-2 rounded-full text-sm">AWS</span>
+                        <span class="skill-tag glass px-4 py-2 rounded-full text-sm">GCP</span>
+                        <span class="skill-tag glass px-4 py-2 rounded-full text-sm">CI/CD (Github, Gitlab, ArgoCD)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 max-w-6xl mx-auto">
+        <div class="container px-6">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 gradient-text">Experience</h2>
+            <div class="mx-auto space-y-8">
+                <!-- Principal -->
+                <div class="slide-up glass p-8 rounded-2xl">
+                    <div class="flex flex-col md:flex-row md:justify-between mb-4">
+                        <div>
+                            <h3 class="text-2xl font-semibold gradient-text">Principal Software Engineer</h3>
+                            <p class="text-gray-400">WebEngage</p>
+                        </div>
+                        <div class="text-gray-500">
+                            <p>April 2022 - November 2024</p>
+                            <p>Mumbai, India</p>
+                        </div>
+                    </div>
+                    <ul class="text-gray-400 space-y-2">
+                        <li>1. Led development of critical features from ideation to launch, aligning work with business goals and client requirements.</li>
+                        <li>2. Worked cross-functionally with project managers, QA, DoE, and internal teams to resolve issues and drive progress.</li>
+                        <li>3. Implemented CI/CD pipelines, improving delivery speed and reducing time-to-market.</li>
+                        <li>4. Mentored junior engineers, supported hiring and promotion decisions, and fostered a culture of innovation and growth.</li>
+                        <li>5. Handled debugging, root cause analysis, and troubleshooting in high-pressure, deadline-driven environmens.</li>
+                        <li>6. Spearheaded adoption of best practices in coding, documentation, and design; ensured high technical standards across the team.</li>
+                    </ul>
+                </div>
+                <!-- Senior -->
+                <div class="slide-up glass p-8 rounded-2xl" style="animation-delay:0.2s;">
+                    <div class="flex flex-col md:flex-row md:justify-between mb-4">
+                        <div>
+                            <h3 class="text-2xl font-semibold gradient-text">Senior Software Engineer</h3>
+                            <p class="text-gray-400">WebEngage</p>
+                        </div>
+                        <div class="text-gray-500">
+                            <p>March 2013 - April 2022</p>
+                            <p>Mumbai, India</p>
+                        </div>
+                    </div>
+                    <ul class="text-gray-400 space-y-2">
+                      <li>1. Built and scaled data-intensive services handling billions of events daily, including:
+                        <ul class="pl-6 list-disc list-inside space-y-1">
+                          <li>1. End-to-end event and profiles ingestion pipeline into BigQuery.</li>
+                          <li>2. Real-time stats (users, events, campaigns) using Kafka and Redis</li>
+                          <li>3. Campaign attribution, auditing, reporting, and product comms services</li>
+                          <li>4. SMS sender/tracker and shared platform libraries</li>
+                        </ul>
+                      </li>
+                      <li>2. Developed Custom Alerts feature for user-defined metrics on dashboards.</li>
+                      <li>3. Created a detailed POC for migrating from BigQuery to StarRocks, including ingestion and query services</li>
+                      <li>4. Also contributed to Frontend and Android development for short-term projects.</li>
+                      <li>5. Many more important projects.</li>
+                    </ul>
+                </div>
+                <!-- Apster -->
+                <div class="slide-up glass p-8 rounded-2xl" style="animation-delay:0.4s;">
+                    <div class="flex flex-col md:flex-row md:justify-between mb-4">
+                        <div>
+                            <h3 class="text-2xl font-semibold gradient-text">Co-Founder</h3>
+                            <p class="text-gray-400">Apster Technologies Pvt. Ltd.</p>
+                        </div>
+                        <div class="text-gray-500">
+                            <p>September 2011 - August 2012</p>
+                            <p>Ahmedabad, India</p>
+                        </div>
+                    </div>
+                    <ul class="text-gray-400 space-y-2">
+                        <li>1. Built software for large-format in-street advertising management.</li>
+                        <li>2. Developed tablet-based restaurant ordering and billing system.</li>
+                    </ul>
+                </div>
+                <!-- Longcheer -->
+                <div class="slide-up glass p-8 rounded-2xl" style="animation-delay:0.4s;">
+                    <div class="flex flex-col md:flex-row md:justify-between mb-4">
+                        <div>
+                            <h3 class="text-2xl font-semibold gradient-text">Software Engineer - MMI</h3>
+                            <p class="text-gray-400">Longcheer Technology India</p>
+                        </div>
+                        <div class="text-gray-500">
+                            <p>August 2010 - July 2011</p>
+                            <p>Noida, India</p>
+                        </div>
+                    </div>
+                    <ul class="text-gray-400 space-y-2">
+                        <li>2. Worked as MMI engineer for Chinese and Indian brand mobiles with daily job involving customizations and feature developments as per customer need.</li>
+                        <li>2. Worked on MTK platform using plutommi and venus mmi frameworks for feature phones.</li>
+                    </ul>
+                </div>
+                <!-- Emerson -->
+                <div class="slide-up glass p-8 rounded-2xl" style="animation-delay:0.4s;">
+                    <div class="flex flex-col md:flex-row md:justify-between mb-4">
+                        <div>
+                            <h3 class="text-2xl font-semibold gradient-text">Embedded Software Developer</h3>
+                            <p class="text-gray-400">Emerson</p>
+                        </div>
+                        <div class="text-gray-500">
+                            <p>February 2009 - March 2010</p>
+                            <p>Pune, India</p>
+                        </div>
+                    </div>
+                    <ul class="text-gray-400 space-y-2">
+                        <li>1. Worked on gas-chromatography system development. Tasks included writing measurement flows, storage and retrieval of measurements, communications with PC system on UART protocol, and other tasks, on a customized ARM embedded Linux board.</li>
+                        <li>2. Worked on an ATMega sensor board to be used with the above gas-chromatograph project. Tasks included writing routines for sensor readings, supporting sensor re-calibration on-field and interfacing to on-board display.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="max-w-6xl mx-auto py-10">
+        <div class="container px-6">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 gradient-text">Personal Projects</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- ZenQuery -->
+                <div class="project-card glass p-6 rounded-2xl">
+                    <h3 class="text-xl font-semibold mb-2 gradient-text">ZenQuery</h3>
+                    <a href="https://zenquery.app" target="_blank" class="text-sm underline">zenquery.app</a>
+                    <p class="text-gray-400 my-4">Desktop app for private, scalable data analysis via plain English. Supports CSV, JSON, Excel, Parquet.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-gray-800/50 px-2 py-1 rounded text-xs">Desktop</span>
+                        <span class="bg-gray-800/50 px-2 py-1 rounded text-xs">NLP</span>
+                    </div>
+                </div>
+                <!-- DB Stress -->
+                <div class="project-card glass p-6 rounded-2xl">
+                    <h3 class="text-xl font-semibold mb-2 gradient-text">DB Stress Bench</h3>
+                    <span class="text-sm text-green-400">Open Source</span>
+                    <p class="text-gray-400 my-4">Customizable DB load-testing with real-time in-browser stats. Supports MySQL, Postgres, SQLite, DuckDB, Cassandra.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-gray-800/50 px-2 py-1 rounded text-xs">Load Test</span>
+                        <span class="bg-gray-800/50 px-2 py-1 rounded text-xs">Performance</span>
+                    </div>
+                </div>
+                <!-- Blueprint -->
+                <div class="project-card glass p-6 rounded-2xl">
+                    <h3 class="text-xl font-semibold mb-2 gradient-text">Blueprint</h3>
+                    <span class="text-sm text-green-400">Open Source</span>
+                    <p class="text-gray-400 my-4">Zero-dep Java-8 templating engine with Nunjucks-like syntax.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-gray-800/50 px-2 py-1 rounded text-xs">Java</span>
+                        <span class="bg-gray-800/50 px-2 py-1 rounded text-xs">Template</span>
+                    </div>
+                </div>
+                <!-- Guardian -->
+                <div class="project-card glass p-6 rounded-2xl">
+                    <h3 class="text-xl font-semibold mb-2 gradient-text">Guardian</h3>
+                    <span class="text-sm text-green-400">Open Source</span>
+                    <p class="text-gray-400 my-4">Java library for retries, circuit breakers, and fallback strategies.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-gray-800/50 px-2 py-1 rounded text-xs">Fault Tolerance</span>
+                    </div>
+                </div>
+                <!-- Mock OpenAI -->
+                <div class="project-card glass p-6 rounded-2xl">
+                    <h3 class="text-xl font-semibold mb-2 gradient-text">Mock OpenAI Server</h3>
+                    <span class="text-sm text-green-400">Open Source</span>
+                    <p class="text-gray-400 my-4">Node.js Express server mimicking OpenAI endpoints for cost-effective testing.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-gray-800/50 px-2 py-1 rounded text-xs">Node.js</span>
+                    </div>
+                </div>
+                <!-- Verdict -->
+                <div class="project-card glass p-6 rounded-2xl">
+                    <h3 class="text-xl font-semibold mb-2 gradient-text">Verdict & Verdict-Java</h3>
+                    <span class="text-sm text-green-400">Open Source</span>
+                    <p class="text-gray-400 my-4">Evaluate conditions against data using MongoDB-like syntax in JS and Java.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-gray-800/50 px-2 py-1 rounded text-xs">JS</span>
+                        <span class="bg-gray-800/50 px-2 py-1 rounded text-xs">Java</span>
+                    </div>
+                </div>
+                <!-- Schema Generator -->
+                <div class="project-card glass p-6 rounded-2xl">
+                    <h3 class="text-xl font-semibold mb-2 gradient-text">OpenAI Schema Generator</h3>
+                    <span class="text-sm text-green-400">Open Source</span>
+                    <p class="text-gray-400 my-4">Java lib generating JSON schemas from classes via introspection.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-gray-800/50 px-2 py-1 rounded text-xs">Java</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="mt-10 max-w-6xl mx-auto">
+        <div class="container px-6 space-y-8">
+            <h2 class="text-4xl md:text-5xl font-bold text-center gradient-text">Education</h2>
+            <div class="slide-up glass p-8 rounded-2xl">
+                <div class="flex flex-col md:flex-row md:justify-between">
+                    <div>
+                        <h3 class="text-2xl font-semibold gradient-text">Post Graduate in Embedded Systems</h3>
+                        <p class="text-gray-400">CDAC, Pune</p>
+                    </div>
+                    <div class="text-gray-500">September 2008 - February 2009</div>
+                </div>
+            </div>
+            <div class="slide-up glass p-8 rounded-2xl" style="animation-delay:0.2s;">
+                <div class="flex flex-col md:flex-row md:justify-between">
+                    <div>
+                        <h3 class="text-2xl font-semibold gradient-text">B.Tech in EEE</h3>
+                        <p class="text-gray-400">MJPR University, Bareilly</p>
+                    </div>
+                    <div class="text-gray-500">June 2004 - June 2008</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 max-w-6xl mx-auto">
+        <div class="container px-6 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-8 gradient-text">Let's Connect</h2>
+            <p class="text-gray-500 mb-12 max-w-2xl mx-auto">
+                Always eager to take on meaningful challenges and push technical boundaries — happy to connect and explore what’s next.
+            </p>
+            <div class="grid md:grid-cols-3 gap-8">
+                <a href="mailto:nitinbansal85@gmail.com" class="glass p-6 rounded-2xl hover:glow group">
+                    <i class="fas fa-envelope text-3xl gradient-text mb-4 group-hover:scale-110 transform"></i>
+                    <h3 class="text-xl font-semibold mb-2">Email</h3>
+                    <p class="text-gray-400 break-words">nitinbansal85@gmail.com</p>
+                </a>
+                <a href="https://linkedin.com/in/nitinbansal85" target="_blank" class="glass p-6 rounded-2xl hover:glow group">
+                    <i class="fab fa-linkedin text-3xl gradient-text mb-4 group-hover:scale-110 transform"></i>
+                    <h3 class="text-xl font-semibold mb-2">LinkedIn</h3>
+                    <p class="text-gray-400">Connect professionally</p>
+                </a>
+                <a href="tel:+919004579956" class="glass p-6 rounded-2xl hover:glow group">
+                    <i class="fas fa-phone text-3xl gradient-text mb-4 group-hover:scale-110 transform"></i>
+                    <h3 class="text-xl font-semibold mb-2">Phone</h3>
+                    <p class="text-gray-400">+91 9004579956</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 glass">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-gray-400 break-words">© 2025 Nitin Bansal. All rights reserved. | nitinbansal85@gmail.com</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const container = document.querySelector('.particles');
+            const numParticles = 50;
+
+            const nav = document.getElementById('top-nav');
+            const navHeight = nav.offsetHeight;
+
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuButton = document.getElementById('mobile-menu-btn');
+
+            // Smooth scrolling with offset for fixed nav
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', e => {
+                    e.preventDefault();
+                    const targetId = anchor.getAttribute('href');
+                    const target = document.querySelector(targetId);
+                    
+
+                    if (target) {
+                        const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
+                        const offsetPosition = elementPosition - navHeight;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+
+                    // Close mobile menu after click
+                    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
+            });
+
+            // Mobile menu toggle
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Add particles
+            for (let i = 0; i < numParticles; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+
+                // Randomize properties
+                const left = Math.random() * 100; // 0 to 100%
+                const size = Math.floor(Math.random() * 4) + 3; // 3 to 6px
+                const delay = Math.random() * 3; // 0 to 15 seconds
+
+                // Set styles
+                particle.style.left = `${left}%`;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.animationDelay = `${delay}s`;
+
+                container.appendChild(particle);
+            }
+        });
+    </script>
+
+</body>
+</html>
