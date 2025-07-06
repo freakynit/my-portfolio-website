@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nitin Bansal – Resume</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .gradient-bg {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    
+    .section-border {
+      border-left: 4px solid #667eea;
+      padding-left: 1rem;
+    }
+    
+    .skill-tag {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 1rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      display: inline-block;
+      margin: 0.25rem 0.5rem 0.25rem 0;
+    }
+    
+    .experience-card {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      border-left: 4px solid #667eea;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    
+    .experience-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+    
+    .status-badge {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 9999px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .released { background: #10b981; color: white; }
+    .wip { background: #f59e0b; color: white; }
+    .planned { background: #6b7280; color: white; }
+    
+    .contact-link {
+      color: #667eea;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    
+    .contact-link:hover {
+      color: #f093fb;
+    }
+    
+    .section-title {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased leading-relaxed">
+  <main class="max-w-4xl mx-auto my-8 bg-white shadow-2xl rounded-xl overflow-hidden">
+    <!-- Header with Gradient -->
+    <header class="gradient-bg text-white p-8 text-center">
+      <h1 class="text-5xl font-bold tracking-tight mb-4">Nitin Bansal</h1>
+      <div class="flex flex-col sm:flex-row justify-center gap-6 text-sm mb-4">
+        <span><a href="tel:+919004579956" class="contact-link text-white hover:text-gray-200">+91-9004579956</a></span>
+        <span><a href="mailto:nitinbansal85@gmail.com" class="contact-link text-white hover:text-gray-200">nitinbansal85@gmail.com</a></span>
+        <span><a href="https://linkedin.com/in/nitinbansal85" target="_blank" class="contact-link text-white hover:text-gray-200">linkedin.com/in/nitinbansal85</a></span>
+        <span><a href="https://github.com/freakynit" target="_blank" class="contact-link text-white hover:text-gray-200">github.com/freakynit</a></span>
+      </div>
+    </header>
+
+    <p class="text-md font-semibold m-8 mb-4 text-slate-600">12+ years of experience designing and building distributed, data-intensive systems at scale, leading complex technical initiatives end-to-end, mentoring engineers, and driving cross-functional collaboration to deliver high-performance, reliable software systems.</p>
+    
+    <div class="p-8">
+      <!-- Work Experience -->
+      <section class="mb-8">
+        <h2 class="text-2xl section-title mb-6">Work Experience</h2>
+
+        <!-- WebEngage -->
+        <article class="experience-card p-6 mb-6">
+          <header class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-4">
+            <h3 class="text-xl font-bold text-gray-800">WebEngage — Principal Software Engineer</h3>
+            <span class="text-sm text-gray-600 font-medium">Apr 2022 – Nov 2024 • Mumbai, India</span>
+          </header>
+          <ul class="list-disc list-inside text-sm space-y-2 text-gray-700">
+            <li>Led development of multiple projects from ideation to launch while collaborating cross‑functionally with PM, QA, CTO, and Devops.</li>
+            <li>Implemented CI/CD pipelines (in collaboration with devops), cutting release cycle time and improving time‑to‑market.</li>
+            <li>Performed an in-depth PoC (and initial pipelines) to migrate our core BigQuery Warehouse (100+TB) to self-hosted StarRocks.</li>
+            <li>Mentored junior engineers (and debugged code with them) on best practices in code, docs, and architectural thinking.</li>
+            <li>Continuously delivered enhancements and maintained existing systems while handling parallel projects and team coordination.</li>
+          </ul>
+
+          <header class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mt-6 mb-4">
+            <h4 class="text-lg font-semibold text-gray-700">WebEngage — Senior Software Engineer</h4>
+            <span class="text-sm text-gray-600 font-medium">Mar 2013 – Apr 2022 • Mumbai, India</span>
+          </header>
+          <ul class="list-disc list-inside text-sm space-y-2 text-gray-700">
+            <li>Built and scaled multiple data‑intensive services processing billions of events daily.</li>
+            <ul class="list-decimal pl-8 mt-2 space-y-1">
+              <li>End-to-end events ingestion pipeline from Kafka to BigQuery (5B+ events a day)</li>
+              <li>A similar pipeline for update-heavy user profiles in BigQuery (800M+ updates a day)</li>
+              <li>Real-time stats processing 5B+ events and 800M+ profile updates every day and providing aggregated stats using small redis cluster</li>
+              <li>Conversion attribution service using MongoDB working on similar scale</li>
+              <li>Reporting service delivering more than 800 reports everyday with total record count upwards of a few 100 million</li>
+              <li>Latest-event-service using Cassandra, for ussage by the personalization engine</li>
+              <li>Delivered several other high-scale backend services, supporting key product features and system reliability.</li>
+            </ul>
+            <li>Contributed to frontend, a bit of PHP development, & Android projects for cross‑functional initiatives.</li>
+          </ul>
+        </article>
+
+        <!-- Apster -->
+        <article class="experience-card p-6 mb-6">
+          <header class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-4">
+            <h3 class="text-xl font-bold text-gray-800">Apster Technologies Pvt. Ltd. — Co‑Founder</h3>
+            <span class="text-sm text-gray-600 font-medium">Sep 2011 – Aug 2012 • Ahmedabad, India</span>
+          </header>
+          <ul class="list-disc list-inside text-sm space-y-2 text-gray-700">
+            <li>Bootstrapped two products: fully remote, in‑street ad management software and a 100% wireless tablet‑based restaurant ordering & billing system.</li>
+          </ul>
+        </article>
+
+        <!-- Longcheer -->
+        <article class="experience-card p-6 mb-6">
+          <header class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-4">
+            <h3 class="text-xl font-bold text-gray-800">Longcheer Technology India — Software Engineer (MMI)</h3>
+            <span class="text-sm text-gray-600 font-medium">Aug 2010 – Jul 2011 • Noida, India</span>
+          </header>
+          <ul class="list-disc list-inside text-sm space-y-2 text-gray-700">
+            <li>Customized and developed features for Chinese and Indian mobile brands on MTK platform (plutommi & venus mmi).</li>
+          </ul>
+        </article>
+
+        <!-- Emerson -->
+        <article class="experience-card p-6 mb-6">
+          <header class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-4">
+            <h3 class="text-xl font-bold text-gray-800">Emerson — Embedded Software Developer</h3>
+            <span class="text-sm text-gray-600 font-medium">Feb 2009 – Mar 2010 • Pune, India</span>
+          </header>
+          <ul class="list-disc list-inside text-sm space-y-2 text-gray-700">
+            <li>Developed measurement flows, data storage & UART comms for gas‑chromatography system on ARM Linux.</li>
+            <li>Designed sensor‑board firmware (ATMega) supporting on‑field calibration & display interface.</li>
+          </ul>
+        </article>
+      </section>
+
+      <!-- Skills Section -->
+      <section class="mb-8">
+        <h2 class="text-2xl section-title mb-4">Skills</h2>
+        <div class="section-border">
+          <ul class="space-y-3 text-sm">
+            <li><span class="font-bold text-gray-800">Languages</span> — Java, Node.js/JavaScript, Python.</li>
+            <li><span class="font-bold text-gray-800">Databases</span> — BigQuery, Cassandra, MySQL, Redis, Elasticsearch, MongoDB.</li>
+            <li><span class="font-bold text-gray-800">Messaging</span> — Kafka.</li>
+            <li><span class="font-bold text-gray-800">Infra</span> — Kubernetes, Docker, AWS, GCP, CI/CD (GitLab, GitHub, ArgoCD).</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Open Source Projects -->
+      <section class="mb-8">
+        <h2 class="text-2xl section-title mb-6">Open Source Projects</h2>
+        <div class="section-border">
+          <ul class="space-y-3 text-sm">
+            <li><span class="font-bold text-gray-800">DB Stress Bench</span> — Customizable DB load‑testing with real‑time in-browser stats. Supports MySQL, Postgres, SQLite, DuckDB, Cassandra.</li>
+            <li><span class="font-bold text-gray-800">Blueprint</span> — Zero‑dependency Java‑8 templating engine with 100% Nunjucks‑compatible syntax.</li>
+            <li><span class="font-bold text-gray-800">Verdict & Verdict‑Java</span> — Evaluate conditions against data using MongoDB‑like syntax (JavaScript & Java).</li>
+            <li><span class="font-bold text-gray-800">Guardian</span> — Java library offering retries, circuit breakers, and fallback strategies.</li>
+            <li><span class="font-bold text-gray-800">Mock OpenAI Server</span> — NodeJS Express server that faithfully mimics OpenAI endpoints for cost‑effective testing.</li>
+          </ul>
+          <p class="text-sm text-gray-600 mt-4">See more at <a href="https://github.com/freakynit" class="contact-link hover:underline">github.com/freakynit</a>.</p>
+        </div>
+      </section>
+      
+      <!-- Currently Building -->
+      <section class="mb-8">
+        <h2 class="text-2xl section-title mb-6">Currently Building</h2>
+        <div class="section-border">
+          <ul class="space-y-3 text-sm">
+            <li><span class="font-bold text-gray-800">ZenQuery.app</span><span class="status-badge released ml-2">Released</span> — A fully local desktop app (Electron) that gives instant answers on CSV, JSON, Excel & Parquet data files using plain English.</li>
+            <li><span class="font-bold text-gray-800">Product Analytics SaaS </span><span class="status-badge wip ml-2">WIP</span> — Track events and user profiles, build funnels, cohorts, and journeys, analyze retention & conversion rates, generate visual reports, and more.</li>
+            <li><span class="font-bold text-gray-800">AI Journaling App </span><span class="status-badge planned ml-2">Planned</span> — Text or voice entries with auto‑generated topics & insights, plus natural‑language search and more.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Education -->
+      <section class="mb-8">
+        <h2 class="text-2xl section-title mb-6">Education</h2>
+        <div class="section-border">
+          <ul class="space-y-3 text-sm">
+            <li><span class="font-bold text-gray-800">Post Graduate Diploma in Embedded Systems</span>, CDAC Pune — 2008‑2009</li>
+            <li><span class="font-bold text-gray-800">B.Tech. in Electrical, Electronics & Communications Engineering</span>, MJPRU Bareilly — 2004‑2008</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
