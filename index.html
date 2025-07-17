@@ -6,67 +6,107 @@
     <title>Nitin Bansal - Principal Software Engineer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --accent1: #ff0080;
-            --accent2: #c200ff;
-            --glass-bg: rgba(0, 0, 0, 0.4);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --bg-color: #0a0a0a;
-            --text-color: #e0e0e0;
+            --bg-color: #0d1117;
+            --primary-text: #c9d1d9;
+            --accent-color: #58a6ff;
+            --border-color: rgba(88, 166, 255, 0.2);
+            --card-bg: #161b22;
         }
-        * { font-family: 'Inter', sans-serif; }
-        body { background-color: var(--bg-color); color: var(--text-color); }
-        .glass {
-            background: var(--glass-bg);
-            backdrop-filter: blur(15px);
-            border: 1px solid var(--glass-border);
+        * {
+            font-family: 'Roboto Mono', monospace;
         }
-        .gradient-text {
-            background: linear-gradient(135deg, var(--accent1) 0%, var(--accent2) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        body {
+            background-color: var(--bg-color);
+            color: var(--primary-text);
         }
-        .glow {
-            box-shadow: 0 0 20px rgba(255,0,128,0.3);
+        /* Custom Classes */
+        .tech-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
-        .floating { animation: floating 6s ease-in-out infinite; }
-        @keyframes floating { 0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)} }
-        .fade-in { animation: fadeIn 1s ease-out forwards; opacity: 0; }
-        @keyframes fadeIn { to{opacity:1} }
-        .slide-up { animation: slideUp 0.8s ease-out forwards; opacity: 0; transform: translateY(30px); }
-        @keyframes slideUp { to{opacity:1; transform:translateY(0);} }
-        .skill-tag, .project-card, .nav-link { transition: all 0.3s ease; }
-        .skill-tag:hover { cursor: default; transform: translateY(-2px); box-shadow: 0 0px 10px rgba(255,0,128,0.4); }
-        .project-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
-        .nav-link { position: relative; }
+        .tech-card:hover {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 15px rgba(88, 166, 255, 0.2);
+        }
+        .accent-text {
+            color: var(--accent-color);
+        }
+        .skill-tag {
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+        .skill-tag:hover {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            cursor: default;
+        }
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: var(--accent-color);
+        }
         .nav-link::after {
             content: '';
             position: absolute;
             width: 0;
-            height: 2px;
+            height: 1px;
             bottom: -4px;
             left: 0;
-            background: linear-gradient(135deg, var(--accent1) 0%, var(--accent2) 100%);
+            background-color: var(--accent-color);
             transition: width 0.3s ease;
         }
-        .nav-link:hover::after { width: 100%; }
-        .particles { position: absolute; width: 100%; height: 100%; overflow: hidden; z-index: -1; }
-        .particle {
-            position: absolute;
-            background: rgba(255,0,128,0.1);
-            border-radius: 50%;
-            animation: particle-float 15s infinite linear;
+        .nav-link:hover::after {
+            width: 100%;
         }
-        @keyframes particle-float {
-            0% { transform: translateY(100vh); opacity: 0; }
-            10%, 90% { opacity: 1; }
-            100% { transform: translateY(-100px) translateX(100px); opacity: 0; }
-       }
-        footer p { word-wrap: break-word; }
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 1s ease-out forwards;
+            opacity: 0;
+        }
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Typewriter Effect */
+        .typewriter h1 {
+            display: inline-block;
+            overflow: hidden;
+            border-right: .15em solid var(--accent-color);
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: .1em;
+            animation:
+                typing 3.5s steps(30, end),
+                blink-caret .75s step-end infinite;
+        }
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--accent-color); }
+        }
     </style>
-    <script type="text/javascript">
+     <script type="text/javascript">
         (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
             t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
@@ -75,26 +115,18 @@
     </script>
 </head>
 <body class="overflow-x-hidden">
-    <!-- Particles Background -->
-    <div class="particles">
-        <div class="particle" style="left:10%; width:4px; height:4px; animation-delay:0s;"></div>
-        <div class="particle" style="left:30%; width:6px; height:6px; animation-delay:3s;"></div>
-        <div class="particle" style="left:50%; width:3px; height:3px; animation-delay:6s;"></div>
-        <div class="particle" style="left:70%; width:5px; height:5px; animation-delay:9s;"></div>
-        <div class="particle" style="left:90%; width:4px; height:4px; animation-delay:12s;"></div>
-    </div>
 
     <!-- Navigation -->
-    <nav id="top-nav" class="fixed top-0 w-full z-50 glass">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold gradient-text">Nitin Bansal</div>
+    <nav id="top-nav" class="fixed top-0 w-full z-50 bg-opacity-90 backdrop-blur-sm" style="background-color: rgba(13, 17, 23, 0.8);">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center border-b border-[var(--border-color)]">
+            <div class="text-2xl font-bold accent-text">[NB]</div>
             <div id="mobile-menu" class="hidden md:flex flex-col md:flex-row items-center md:space-x-8 space-y-4 md:space-y-0">
-                <a href="#home" class="nav-link">Home</a><span class="md:hidden text-yellow-500"> • </span>
-                <a href="#about" class="nav-link">About</a><span class="md:hidden text-yellow-500"> • </span>
-                <a href="#experience" class="nav-link">Experience</a><span class="md:hidden text-yellow-500"> • </span>
-                <a href="#projects" class="nav-link">Personal Projects</a><span class="md:hidden text-yellow-500"> • </span>
-                <a href="/Resume - Nitin-Bansal.pdf" class="nav-link">Resume</a><span class="md:hidden text-yellow-500"> • </span>
-                <a href="#contact" class="nav-link">Contact</a>
+                <a href="#home" class="nav-link">./home</a>
+                <a href="#about" class="nav-link">./about</a>
+                <a href="#experience" class="nav-link">./experience</a>
+                <a href="#projects" class="nav-link">./projects</a>
+                <a href="/Resume - Nitin-Bansal.pdf" class="nav-link">./resume.pdf</a>
+                <a href="#contact" class="nav-link">./contact</a>
             </div>
             <button id="mobile-menu-btn" class="md:hidden text-xl">
                 <i class="fas fa-bars"></i>
@@ -103,50 +135,45 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="pt-40 flex items-center justify-center relative">
+    <section id="home" class="min-h-screen flex items-center justify-center relative">
         <div class="container mx-auto px-6 text-center">
-            <div class="fade-in" style="animation-delay:0.2s;">
-                <h1 class="text-6xl md:text-8xl font-bold mb-6 gradient-text">Nitin Bansal</h1>
-                <h2 class="text-2xl md:text-3xl text-gray-400 mb-8">Principal Software Engineer</h2>
-                <p class="text-lg md:text-xl text-gray-500 mb-12 max-w-3xl mx-auto">
-                    12+ years in distributed systems, technical architecture, and scalable solution design.
-                </p>
+            <div class="typewriter fade-in">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 accent-text">Nitin Bansal</h1>
             </div>
+            <h2 class="text-2xl md:text-3xl text-gray-400 mb-8 fade-in" style="animation-delay: 3.6s;">Principal Software Engineer</h2>
+            <p class="text-lg md:text-xl text-gray-500 mb-12 max-w-3xl mx-auto fade-in" style="animation-delay: 3.7s;">
+                > 12+ years in distributed systems, technical architecture, and scalable solution design.
+            </p>
         </div>
     </section>
 
-    <div class="w-2/3 md:w-2/5 mt-4 mx-auto h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent"></div>
-
     <!-- About Section -->
-    <section id="about" class="pt-20 max-w-6xl mx-auto">
+    <section id="about" class="py-20 max-w-6xl mx-auto">
         <div class="flex justify-center px-6">
-            <div class="space-y-12">
-                <!-- Summary Block -->
-                <div class="text-xl slide-up text-center">
-                    <p class="text-gray-400 mb-6 leading-relaxed">
+            <div class="space-y-12 w-full">
+                <div class="tech-card p-8 fade-in-up">
+                    <h2 class="text-3xl font-bold text-center mb-8"><span class="accent-text">//</span> About Me</h2>
+                    <p class="text-xl text-gray-400 mb-8 leading-relaxed text-center">
                         14+ years of total experience, including 12+ years specializing in distributed systems, technical architecture, and scalable solution design. Strong background in end-to-end project execution and mentorship, with a track record of driving engineering excellence and delivering high-impact solutions.
                     </p>
-                </div>
-
-                <!-- Technical Skills Block -->
-                <div class="slide-up text-center" style="animation-delay:0.2s;">
-                    <!-- <h3 class="text-2xl font-semibold mb-6 gradient-text">Technical Skills</h3> -->
+                    <div class="w-1/3 mx-auto h-px my-8 bg-[var(--border-color)]"></div>
+                    <h3 class="text-2xl font-semibold mb-6 accent-text text-center">Technical Skills</h3>
                     <div class="flex flex-wrap justify-center gap-3">
-                        <span class="skill-tag glass px-4 py-2 rounded-full text-sm">Java</span>
-                        <span class="skill-tag glass px-4 py-2 rounded-full text-sm">Nodejs</span>
-                        <span class="skill-tag glass px-4 py-2 rounded-full text-sm">Python</span>
-                        <span class="skill-tag glass px-4 py-2 rounded-full text-sm">BigQuery</span>
-                        <span class="skill-tag glass px-4 py-2 rounded-full text-sm">Cassandra</span>
-                        <span class="skill-tag glass px-4 py-2 rounded-full text-sm">MySQL</span>
-                        <span class="skill-tag glass px-4 py-2 rounded-full text-sm">Redis</span>
-                        <span class="skill-tag glass px-4 py-2 rounded-full text-sm">Elasticsearch</span>
-                        <span class="skill-tag glass px-4 py-2 rounded-full text-sm">MongoDB</span>
-                        <span class="skill-tag glass px-4 py-2 rounded-full text-sm">Kafka</span>
-                        <span class="skill-tag glass px-4 py-2 rounded-full text-sm">Kubernetes</span>
-                        <span class="skill-tag glass px-4 py-2 rounded-full text-sm">Docker</span>
-                        <span class="skill-tag glass px-4 py-2 rounded-full text-sm">AWS</span>
-                        <span class="skill-tag glass px-4 py-2 rounded-full text-sm">GCP</span>
-                        <span class="skill-tag glass px-4 py-2 rounded-full text-sm">CI/CD (Github, Gitlab, ArgoCD)</span>
+                        <span class="skill-tag px-3 py-1 text-sm">Java</span>
+                        <span class="skill-tag px-3 py-1 text-sm">Nodejs</span>
+                        <span class="skill-tag px-3 py-1 text-sm">Python</span>
+                        <span class="skill-tag px-3 py-1 text-sm">BigQuery</span>
+                        <span class="skill-tag px-3 py-1 text-sm">Cassandra</span>
+                        <span class="skill-tag px-3 py-1 text-sm">MySQL</span>
+                        <span class="skill-tag px-3 py-1 text-sm">Redis</span>
+                        <span class="skill-tag px-3 py-1 text-sm">Elasticsearch</span>
+                        <span class="skill-tag px-3 py-1 text-sm">MongoDB</span>
+                        <span class="skill-tag px-3 py-1 text-sm">Kafka</span>
+                        <span class="skill-tag px-3 py-1 text-sm">Kubernetes</span>
+                        <span class="skill-tag px-3 py-1 text-sm">Docker</span>
+                        <span class="skill-tag px-3 py-1 text-sm">AWS</span>
+                        <span class="skill-tag px-3 py-1 text-sm">GCP</span>
+                        <span class="skill-tag px-3 py-1 text-sm">CI/CD</span>
                     </div>
                 </div>
             </div>
@@ -157,222 +184,148 @@
     <!-- Experience Section -->
     <section id="experience" class="py-20 max-w-6xl mx-auto">
         <div class="container px-6">
-            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 gradient-text">Experience</h2>
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 accent-text">Experience</h2>
             <div class="mx-auto space-y-8">
-                <!-- Principal -->
-                <div class="slide-up glass p-8 rounded-2xl">
+                <div class="fade-in-up tech-card p-8">
                     <div class="flex flex-col md:flex-row md:justify-between mb-4">
                         <div>
-                            <h3 class="text-2xl font-semibold gradient-text">Principal Software Engineer</h3>
+                            <h3 class="text-2xl font-semibold accent-text">Principal Software Engineer</h3>
                             <p class="text-gray-400">WebEngage</p>
                         </div>
-                        <div class="text-gray-500">
+                        <div class="text-gray-500 text-left md:text-right">
                             <p>April 2022 - November 2024</p>
                             <p>Mumbai, India</p>
                         </div>
                     </div>
-                    <ul class="list-disc text-gray-400 space-y-2">
+                    <ul class="list-disc list-inside text-gray-400 space-y-2">
                         <li>Led development of multiple projects from ideation to launch while collaborating cross‑functionally with PM, QA, CTO, and Devops.</li>
-                        <li>Implemented CI/CD pipelines (in collaboration with devops), cutting release cycle time and improving time‑to‑market.</li>
-                        <li>Performed an in-depth PoC (and initial pipelines) to migrate our core BigQuery Warehouse (100+TB) to self-hosted StarRocks.</li>
-                        <li>Mentored junior engineers (and debugged code with them) on best practices in code, docs, and architectural thinking.</li>
-                        <li>Continuously delivered enhancements and maintained existing systems while handling parallel projects and team coordination.</li>
+                        <li>Implemented CI/CD pipelines, cutting release cycle time and improving time‑to‑market.</li>
+                        <li>Performed a PoC to migrate our core BigQuery Warehouse (100+TB) to self-hosted StarRocks.</li>
+                        <li>Mentored engineers on best practices in code, docs, and architectural thinking.</li>
                     </ul>
                 </div>
-                <!-- Senior -->
-                <div class="slide-up glass p-8 rounded-2xl" style="animation-delay:0.2s;">
+                <div class="fade-in-up tech-card p-8">
                     <div class="flex flex-col md:flex-row md:justify-between mb-4">
                         <div>
-                            <h3 class="text-2xl font-semibold gradient-text">Senior Software Engineer</h3>
+                            <h3 class="text-2xl font-semibold accent-text">Senior Software Engineer</h3>
                             <p class="text-gray-400">WebEngage</p>
                         </div>
-                        <div class="text-gray-500">
+                        <div class="text-gray-500 text-left md:text-right">
                             <p>March 2013 - April 2022</p>
                             <p>Mumbai, India</p>
                         </div>
                     </div>
-                    <ul class="text-gray-400 space-y-2">
-                      <ul class="list-disc list-inside space-y-2">
-                        <li>Built and scaled multiple data‑intensive services processing billions of events daily.</li>
-                        <ul class="list-decimal pl-8 mt-2 text-gray-500 space-y-1">
-                          <li>End-to-end events ingestion pipeline from Kafka to BigQuery (5B+ events a day)</li>
-                          <li>A similar pipeline for update-heavy user profiles in BigQuery (800M+ updates a day)</li>
-                          <li>Real-time stats processing 5B+ events and 800M+ profile updates every day and providing aggregated stats using small redis cluster</li>
-                          <li>Conversion attribution service using MongoDB working on similar scale</li>
-                          <li>Reporting service delivering more than 800 reports everyday with total record count upwards of a few 100 million</li>
-                          <li>Latest-event-service using Cassandra, for ussage by the personalization engine</li>
-                          <li>Delivered several other high-scale backend services, supporting key product features and system reliability.</li>
-                        </ul>
-                        <li>Contributed to frontend, a bit of PHP development, & Android projects for cross‑functional initiatives.</li>
+                    <ul class="list-disc list-inside text-gray-400 space-y-2">
+                        <li>Built and scaled multiple data‑intensive services processing billions of events daily (Kafka to BigQuery, Real-time stats, Attribution, etc).</li>
+                        <li>Engineered high-throughput pipelines for user profiles (800M+ daily updates) and event ingestion (5B+ daily events).</li>
+                        <li>Developed key backend services including reporting, a latest-event-service using Cassandra, and personalization engine components.</li>
+                        <li>Contributed to frontend development (PHP, Android) for cross‑functional initiatives.</li>
                       </ul>
                 </div>
-                <!-- Apster -->
-                <div class="slide-up glass p-8 rounded-2xl" style="animation-delay:0.4s;">
+                <div class="fade-in-up tech-card p-8">
                     <div class="flex flex-col md:flex-row md:justify-between mb-4">
                         <div>
-                            <h3 class="text-2xl font-semibold gradient-text">Co-Founder</h3>
+                            <h3 class="text-2xl font-semibold accent-text">Co-Founder</h3>
                             <p class="text-gray-400">Apster Technologies Pvt. Ltd.</p>
                         </div>
-                        <div class="text-gray-500">
+                        <div class="text-gray-500 text-left md:text-right">
                             <p>September 2011 - August 2012</p>
-                            <p>Ahmedabad, India</p>
                         </div>
                     </div>
-                    <ul class="text-gray-400 space-y-2">
-                        <li>1. Built software for large-format in-street advertising management.</li>
-                        <li>2. Developed tablet-based restaurant ordering and billing system.</li>
-                    </ul>
                 </div>
-                <!-- Longcheer -->
-                <div class="slide-up glass p-8 rounded-2xl" style="animation-delay:0.4s;">
+                 <div class="fade-in-up tech-card p-8">
                     <div class="flex flex-col md:flex-row md:justify-between mb-4">
                         <div>
-                            <h3 class="text-2xl font-semibold gradient-text">Software Engineer - MMI</h3>
-                            <p class="text-gray-400">Longcheer Technology India</p>
+                            <h3 class="text-2xl font-semibold accent-text">Software Engineer - MMI</h3>
+                            <p class="text-gray-400">Longcheer Technology</p>
                         </div>
-                        <div class="text-gray-500">
+                        <div class="text-gray-500 text-left md:text-right">
                             <p>August 2010 - July 2011</p>
-                            <p>Noida, India</p>
                         </div>
                     </div>
-                    <ul class="text-gray-400 space-y-2">
-                        <li>2. Worked as MMI engineer for Chinese and Indian brand mobiles with daily job involving customizations and feature developments as per customer need.</li>
-                        <li>2. Worked on MTK platform using plutommi and venus mmi frameworks for feature phones.</li>
-                    </ul>
                 </div>
-                <!-- Emerson -->
-                <div class="slide-up glass p-8 rounded-2xl" style="animation-delay:0.4s;">
+                 <div class="fade-in-up tech-card p-8">
                     <div class="flex flex-col md:flex-row md:justify-between mb-4">
                         <div>
-                            <h3 class="text-2xl font-semibold gradient-text">Embedded Software Developer</h3>
+                            <h3 class="text-2xl font-semibold accent-text">Embedded Software Developer</h3>
                             <p class="text-gray-400">Emerson</p>
                         </div>
-                        <div class="text-gray-500">
+                        <div class="text-gray-500 text-left md:text-right">
                             <p>February 2009 - March 2010</p>
-                            <p>Pune, India</p>
                         </div>
                     </div>
-                    <ul class="text-gray-400 space-y-2">
-                        <li>1. Worked on gas-chromatography system development. Tasks included writing measurement flows, storage and retrieval of measurements, communications with PC system on UART protocol, and other tasks, on a customized ARM embedded Linux board.</li>
-                        <li>2. Worked on an ATMega sensor board to be used with the above gas-chromatograph project. Tasks included writing routines for sensor readings, supporting sensor re-calibration on-field and interfacing to on-board display.</li>
-                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="max-w-6xl mx-auto py-10">
+    <section id="projects" class="py-20 max-w-6xl mx-auto">
         <div class="container px-6">
-            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 gradient-text">Personal Projects</h2>
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 accent-text">Personal Projects</h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- ZenQuery -->
-                <div class="project-card glass p-6 rounded-2xl">
-                    <h3 class="text-xl font-semibold mb-2 gradient-text">ZenQuery</h3>
-                    <a href="https://zenquery.app" target="_blank" class="text-sm underline text-green-400">https://zenquery.app</a>
-                    <p class="text-gray-400 my-4">Desktop app for private, scalable data analysis via plain English. Supports CSV, JSON, Excel, Parquet.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-gray-800/50 px-2 py-1 rounded text-xs">Analytics</span>
-                        <span class="bg-gray-800/50 px-2 py-1 rounded text-xs">LLM</span>
-                    </div>
+                <!-- Project Card -->
+                <div class="tech-card p-6 flex flex-col fade-in-up">
+                    <h3 class="text-xl font-semibold mb-2 accent-text">ZenQuery</h3>
+                    <p class="text-gray-400 my-4 flex-grow">Desktop app for private, scalable data analysis via plain English. Supports CSV, JSON, Excel, Parquet.</p>
+                    <a href="https://zenquery.app" target="_blank" class="text-sm nav-link self-start">View Project →</a>
                 </div>
-                <!-- DB Stress -->
-                <div class="project-card glass p-6 rounded-2xl">
-                    <h3 class="text-xl font-semibold mb-2 gradient-text">DB Stress Bench</h3>
-                    <a href="https://github.com/freakynit/db-stress-bench" target="_blank" class="text-sm underline text-green-400">https://github.com/freakynit/db-stress-bench</a>
-                    <p class="text-gray-400 my-4">Customizable DB load-testing with real-time in-browser stats. Supports MySQL, Postgres, SQLite, DuckDB, Cassandra.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-gray-800/50 px-2 py-1 rounded text-xs">Load Testing</span>
-                        <span class="bg-gray-800/50 px-2 py-1 rounded text-xs">Performance Benchmarking</span>
-                    </div>
+                <!-- Project Card -->
+                <div class="tech-card p-6 flex flex-col fade-in-up">
+                    <h3 class="text-xl font-semibold mb-2 accent-text">DB Stress Bench</h3>
+                    <p class="text-gray-400 my-4 flex-grow">Customizable DB load-testing with real-time in-browser stats. Supports MySQL, Postgres, SQLite, DuckDB, Cassandra.</p>
+                    <a href="https://github.com/freakynit/db-stress-bench" target="_blank" class="text-sm nav-link self-start">View on GitHub →</a>
                 </div>
-                <!-- Blueprint -->
-                <div class="project-card glass p-6 rounded-2xl">
-                    <h3 class="text-xl font-semibold mb-2 gradient-text">Blueprint</h3>
-                    <a href="https://github.com/freakynit/Blueprint" target="_blank" class="text-sm underline text-green-400">https://github.com/freakynit/Blueprint</a>
-                    <p class="text-gray-400 my-4">Zero-dep Java-8 templating engine with Nunjucks-like syntax.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-gray-800/50 px-2 py-1 rounded text-xs">Java</span>
-                        <span class="bg-gray-800/50 px-2 py-1 rounded text-xs">Templating Engine</span>
-                        <span class="bg-gray-800/50 px-2 py-1 rounded text-xs">Nunjucks</span>
-                    </div>
+                <!-- Project Card -->
+                <div class="tech-card p-6 flex flex-col fade-in-up">
+                    <h3 class="text-xl font-semibold mb-2 accent-text">Blueprint</h3>
+                    <p class="text-gray-400 my-4 flex-grow">Zero-dependency Java 8 templating engine with a Nunjucks-like syntax.</p>
+                    <a href="https://github.com/freakynit/Blueprint" target="_blank" class="text-sm nav-link self-start">View on GitHub →</a>
                 </div>
-                <!-- Guardian -->
-                <div class="project-card glass p-6 rounded-2xl">
-                    <h3 class="text-xl font-semibold mb-2 gradient-text">Guardian</h3>
-                    <a href="https://github.com/freakynit/guardian" target="_blank" class="text-sm underline text-green-400">https://github.com/freakynit/guardian</a>
-                    <p class="text-gray-400 my-4">Java library for retries, circuit breakers, and fallback strategies.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-gray-800/50 px-2 py-1 rounded text-xs">Fault Tolerance</span>
-                    </div>
+                <!-- Project Card -->
+                <div class="tech-card p-6 flex flex-col fade-in-up">
+                    <h3 class="text-xl font-semibold mb-2 accent-text">Guardian</h3>
+                    <p class="text-gray-400 my-4 flex-grow">A Java library for implementing resilient operations using retries, circuit breakers, and fallback strategies.</p>
+                    <a href="https://github.com/freakynit/guardian" target="_blank" class="text-sm nav-link self-start">View on GitHub →</a>
                 </div>
-                <!-- Mock OpenAI -->
-                <div class="project-card glass p-6 rounded-2xl">
-                    <h3 class="text-xl font-semibold mb-2 gradient-text">Mock OpenAI Server</h3>
-                    <a href="https://github.com/freakynit/mock-openai-server" target="_blank" class="text-sm underline text-green-400">https://github.com/freakynit/mock-openai-server</a>
-                    <p class="text-gray-400 my-4">Nodejs Express server mimicking OpenAI endpoints for cost-effective testing.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-gray-800/50 px-2 py-1 rounded text-xs">OpenAI</span>
-                        <span class="bg-gray-800/50 px-2 py-1 rounded text-xs">Mocking</span>
-                        <span class="bg-gray-800/50 px-2 py-1 rounded text-xs">Nodejs</span>
-                    </div>
+                <!-- Project Card -->
+                <div class="tech-card p-6 flex flex-col fade-in-up">
+                    <h3 class="text-xl font-semibold mb-2 accent-text">Mock OpenAI Server</h3>
+                    <p class="text-gray-400 my-4 flex-grow">A Node.js Express server that mimics OpenAI API endpoints for local, cost-effective testing of LLM applications.</p>
+                    <a href="https://github.com/freakynit/mock-openai-server" target="_blank" class="text-sm nav-link self-start">View on GitHub →</a>
                 </div>
-                <!-- Verdict -->
-                <div class="project-card glass p-6 rounded-2xl">
-                    <h3 class="text-xl font-semibold mb-2 gradient-text">Verdict & Verdict-Java</h3>
-                    <a href="https://github.com/freakynit/Verdict" target="_blank" class="text-sm underline text-green-400">https://github.com/freakynit/Verdict</a>
-                    <br /><a href="https://github.com/freakynit/Verdict-java" target="_blank" class="text-sm underline text-green-400">https://github.com/freakynit/Verdict-java</a>
-                    <p class="text-gray-400 my-4">Evaluate conditions against data using MongoDB-like syntax in JS and Java.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-gray-800/50 px-2 py-1 rounded text-xs">MongoDB</span>
-                        <span class="bg-gray-800/50 px-2 py-1 rounded text-xs">Expression Evaluator</span>
-                    </div>
-                </div>
-                <!-- Schema Generator -->
-                <div class="project-card glass p-6 rounded-2xl">
-                    <h3 class="text-xl font-semibold mb-2 gradient-text">OpenAI Schema Generator</h3>
-                    <a href="https://github.com/freakynit/openai-function-schema-generator" target="_blank" class="text-sm underline text-green-400">https://github.com/freakynit/openai-function-schema-generator</a>
-                    <p class="text-gray-400 my-4">Java lib generating JSON schemas from classes via introspection.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-gray-800/50 px-2 py-1 rounded text-xs">Java</span>
-                        <span class="bg-gray-800/50 px-2 py-1 rounded text-xs">Schema Generator</span>
-                    </div>
-                </div>
-                <!-- Tiny Graph DB -->
-                <div class="project-card glass p-6 rounded-2xl">
-                    <h3 class="text-xl font-semibold mb-2 gradient-text">TinyGraphDB</h3>
-                    <a href="https://github.com/freakynit/tiny-graph-db" target="_blank" class="text-sm underline text-green-400">https://github.com/freakynit/tiny-graph-db</a>
-                    <p class="text-gray-400 my-4">A tiny, no-external-dependencies, disk-based graph database for Nodejs with rich set of operations.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-gray-800/50 px-2 py-1 rounded text-xs">Node</span>
-                        <span class="bg-gray-800/50 px-2 py-1 rounded text-xs">Graph</span>
-                        <span class="bg-gray-800/50 px-2 py-1 rounded text-xs">Database</span>
-                    </div>
+                <!-- Project Card -->
+                <div class="tech-card p-6 flex flex-col fade-in-up">
+                    <h3 class="text-xl font-semibold mb-2 accent-text">TinyGraphDB</h3>
+                    <p class="text-gray-400 my-4 flex-grow">A tiny, zero-dependency, disk-based graph database for Node.js with a rich set of graph operations.</p>
+                    <a href="https://github.com/freakynit/tiny-graph-db" target="_blank" class="text-sm nav-link self-start">View on GitHub →</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Education Section -->
-    <section id="education" class="mt-10 max-w-6xl mx-auto">
-        <div class="container px-6 space-y-8">
-            <h2 class="text-4xl md:text-5xl font-bold text-center gradient-text">Education</h2>
-            <div class="slide-up glass p-8 rounded-2xl">
-                <div class="flex flex-col md:flex-row md:justify-between">
-                    <div>
-                        <h3 class="text-2xl font-semibold gradient-text">Post Graduate in Embedded Systems</h3>
-                        <p class="text-gray-400">CDAC, Pune</p>
+    <section id="education" class="py-20 max-w-6xl mx-auto">
+        <div class="container px-6">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 accent-text">Education</h2>
+             <div class="mx-auto space-y-8">
+                <div class="fade-in-up tech-card p-8">
+                    <div class="flex flex-col md:flex-row md:justify-between">
+                        <div>
+                            <h3 class="text-xl font-semibold accent-text">Post Graduate in Embedded Systems</h3>
+                            <p class="text-gray-400">CDAC, Pune</p>
+                        </div>
+                        <div class="text-gray-500">2008 - 2009</div>
                     </div>
-                    <div class="text-gray-500">September 2008 - February 2009</div>
                 </div>
-            </div>
-            <div class="slide-up glass p-8 rounded-2xl" style="animation-delay:0.2s;">
-                <div class="flex flex-col md:flex-row md:justify-between">
-                    <div>
-                        <h3 class="text-2xl font-semibold gradient-text">B.Tech in ECE</h3>
-                        <p class="text-gray-400">MJPR University, Bareilly</p>
+                <div class="fade-in-up tech-card p-8">
+                    <div class="flex flex-col md:flex-row md:justify-between">
+                        <div>
+                            <h3 class="text-xl font-semibold accent-text">B.Tech in ECE</h3>
+                            <p class="text-gray-400">MJPR University, Bareilly</p>
+                        </div>
+                        <div class="text-gray-500">2004 - 2008</div>
                     </div>
-                    <div class="text-gray-500">June 2004 - June 2008</div>
                 </div>
             </div>
         </div>
@@ -381,98 +334,53 @@
     <!-- Contact Section -->
     <section id="contact" class="py-20 max-w-6xl mx-auto">
         <div class="container px-6 text-center">
-            <h2 class="text-4xl md:text-5xl font-bold mb-8 gradient-text">Let's Connect</h2>
+            <h2 class="text-4xl md:text-5xl font-bold mb-8 accent-text">Contact</h2>
             <p class="text-gray-500 mb-12 max-w-2xl mx-auto">
-                Always eager to take on meaningful challenges and push technical boundaries — happy to connect and explore what’s next.
+                Eager to take on new challenges. Let's connect.
             </p>
-            <div class="grid md:grid-cols-3 gap-8">
-                <a href="mailto:nitinbansal85@gmail.com" class="glass p-6 rounded-2xl hover:glow group">
-                    <i class="fas fa-envelope text-3xl gradient-text mb-4 group-hover:scale-110 transform"></i>
-                    <h3 class="text-xl font-semibold mb-2">Email</h3>
-                    <p class="text-gray-400 break-words">nitinbansal85@gmail.com</p>
-                </a>
-                <a href="https://linkedin.com/in/nitinbansal85" target="_blank" class="glass p-6 rounded-2xl hover:glow group">
-                    <i class="fab fa-linkedin text-3xl gradient-text mb-4 group-hover:scale-110 transform"></i>
-                    <h3 class="text-xl font-semibold mb-2">LinkedIn</h3>
-                    <p class="text-gray-400">Connect Professionally</p>
-                </a>
-                <a href="https://x.com/freakynit" class="glass p-6 rounded-2xl hover:glow group">
-                    <i class="fab fa-x-twitter text-3xl gradient-text mb-4 group-hover:scale-110 transform"></i>
-                    <h3 class="text-xl font-semibold mb-2">X.com</h3>
-                    <p class="text-gray-400">Personal/Professional Both</p>
-                </a>
+            <div class="flex justify-center items-center space-x-8 text-3xl">
+                <a href="mailto:nitinbansal85@gmail.com" class="nav-link"><i class="fas fa-envelope"></i></a>
+                <a href="https://linkedin.com/in/nitinbansal85" target="_blank" class="nav-link"><i class="fab fa-linkedin"></i></a>
+                <a href="https://x.com/freakynit" target="_blank" class="nav-link"><i class="fab fa-x-twitter"></i></a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-8 glass">
+    <footer class="py-8 border-t border-[var(--border-color)]">
         <div class="container mx-auto px-6 text-center">
-            <p class="text-gray-400 break-words">© 2025 Nitin Bansal. All rights reserved. | nitinbansal85@gmail.com</p>
+            <p class="text-gray-500 text-sm">Nitin Bansal © 2025 | Built with passion and code.</p>
         </div>
     </footer>
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const container = document.querySelector('.particles');
-            const numParticles = 50;
-
             const nav = document.getElementById('top-nav');
             const navHeight = nav.offsetHeight;
-
             const mobileMenu = document.getElementById('mobile-menu');
             const mobileMenuButton = document.getElementById('mobile-menu-btn');
 
-            // Smooth scrolling with offset for fixed nav
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', e => {
                     e.preventDefault();
                     const targetId = anchor.getAttribute('href');
                     const target = document.querySelector(targetId);
                     
-
                     if (target) {
                         const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
                         const offsetPosition = elementPosition - navHeight;
-
-                        window.scrollTo({
-                            top: offsetPosition,
-                            behavior: 'smooth'
-                        });
+                        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
                     }
-
-                    // Close mobile menu after click
                     if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
                         mobileMenu.classList.add('hidden');
                     }
                 });
             });
 
-            // Mobile menu toggle
             mobileMenuButton.addEventListener('click', () => {
                 mobileMenu.classList.toggle('hidden');
             });
-
-            // Add particles
-            for (let i = 0; i < numParticles; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-
-                // Randomize properties
-                const left = Math.random() * 100; // 0 to 100%
-                const size = Math.floor(Math.random() * 4) + 3; // 3 to 6px
-                const delay = Math.random() * 3; // 0 to 15 seconds
-
-                // Set styles
-                particle.style.left = `${left}%`;
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                particle.style.animationDelay = `${delay}s`;
-
-                container.appendChild(particle);
-            }
         });
     </script>
-
 </body>
 </html>
