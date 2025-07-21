@@ -1,386 +1,601 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nitin Bansal - Principal Software Engineer</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-color: #0d1117;
-            --primary-text: #c9d1d9;
-            --accent-color: #58a6ff;
-            --border-color: rgba(88, 166, 255, 0.2);
-            --card-bg: #161b22;
-        }
-        * {
-            font-family: 'Roboto Mono', monospace;
-        }
-        body {
-            background-color: var(--bg-color);
-            color: var(--primary-text);
-        }
-        /* Custom Classes */
-        .tech-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-        .tech-card:hover {
-            border-color: var(--accent-color);
-            box-shadow: 0 0 15px rgba(88, 166, 255, 0.2);
-        }
-        .accent-text {
-            color: var(--accent-color);
-        }
-        .skill-tag {
-            border: 1px solid var(--border-color);
-            transition: all 0.3s ease;
-        }
-        .skill-tag:hover {
-            background-color: var(--accent-color);
-            color: var(--bg-color);
-            cursor: default;
-        }
-        .nav-link {
-            position: relative;
-            transition: color 0.3s ease;
-        }
-        .nav-link:hover {
-            color: var(--accent-color);
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 1px;
-            bottom: -4px;
-            left: 0;
-            background-color: var(--accent-color);
-            transition: width 0.3s ease;
-        }
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        /* Animations */
-        .fade-in {
-            animation: fadeIn 1s ease-out forwards;
-            opacity: 0;
-        }
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
-        .fade-in-up {
-            animation: fadeInUp 0.8s ease-out forwards;
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
+<html lang="en" class="scroll-smooth">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width,initial-scale=1" />
+      <title>Principal Software Engineer Portfolio</title>
+
+      <!-- Google Fonts -->
+      <link rel="preconnect" href="https://fonts.gstatic.com" />
+      <link
+         href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@300;400;500&display=swap"
+         rel="stylesheet"
+      />
+      <link
+         rel="stylesheet"
+         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      />
+
+      <!-- Tailwind CSS -->
+      <script src="https://cdn.tailwindcss.com"></script>
+
+      <!-- Tailwind Configuration -->
+      <script>
+         tailwind.config = {
+            theme: {
+               extend: {
+                  colors: {
+                     "bg-1": "#0c0d0e",
+                     "bg-2": "#15171a",
+                     "card-bg": "#121316",
+                     accent: "#00eaff",
+                     "accent-fade": "rgba(0, 234, 255, 0.15)",
+                     "text-main": "#e6e6e6",
+                     "text-muted": "#aaa",
+                  },
+                  fontFamily: {
+                     sans: ["Inter", "sans-serif"],
+                     orbitron: ["Orbitron", "sans-serif"],
+                  },
+                  boxShadow: {
+                     sm: "0 2px 4px rgba(0, 0, 0, 0.45)",
+                     lg: "0 12px 28px rgba(0, 0, 0, 0.55)",
+                     glow: "0 0 20px var(--tw-shadow-color)",
+                  },
+                  animation: {
+                     pulse: "pulse 2s infinite",
+                  },
+                  keyframes: {
+                     pulse: {
+                        "0%, 100%": { transform: "scale(1)", opacity: "1" },
+                        "50%": { transform: "scale(1.8)", opacity: "0" },
+                     },
+                  },
+               },
+            },
+         };
+      </script>
+
+      <!-- Minimal Custom Styles -->
+      <style type="text/tailwindcss">
+         @layer base {
+            /* Base body styles */
+            body {
+               @apply font-sans bg-bg-1 text-text-main min-h-screen overflow-x-hidden;
+               background-image: radial-gradient(
+                  at top right,
+                  theme("colors.bg-2"),
+                  theme("colors.bg-1") 70%
+               );
             }
-        }
-        /* Typewriter Effect */
-        .typewriter h1 {
-            display: inline-block;
-            overflow: hidden;
-            border-right: .15em solid var(--accent-color);
-            white-space: nowrap;
-            margin: 0 auto;
-            letter-spacing: .1em;
-            animation:
-                typing 3.5s steps(30, end),
-                blink-caret .75s step-end infinite;
-        }
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: var(--accent-color); }
-        }
-    </style>
-     <script type="text/javascript">
-        (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", "s9ht59enwj");
-    </script>
-</head>
-<body class="overflow-x-hidden">
+            /* Custom selection color */
+            ::selection {
+               @apply bg-accent text-black;
+            }
+         }
+         @layer components {
+            /* Hamburger menu icon custom style */
+            .nav__button {
+               background:
+                  linear-gradient(theme("colors.text-main") 0 0) center/100% 2px,
+                  linear-gradient(theme("colors.text-main") 0 0) center/100% 2px,
+                  linear-gradient(theme("colors.text-main") 0 0) center/100% 2px;
+               background-repeat: no-repeat;
+               background-position: top, center, bottom;
+            }
 
-    <!-- Navigation -->
-    <nav id="top-nav" class="fixed top-0 w-full z-50 bg-opacity-90 backdrop-blur-sm" style="background-color: rgba(13, 17, 23, 0.8);">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center border-b border-[var(--border-color)]">
-            <div class="text-2xl font-bold accent-text">[NB]</div>
-            <div id="mobile-menu" class="hidden md:flex flex-col md:flex-row items-center md:space-x-8 space-y-4 md:space-y-0">
-                <a href="#home" class="nav-link">./home</a>
-                <a href="#about" class="nav-link">./about</a>
-                <a href="#experience" class="nav-link">./experience</a>
-                <a href="#projects" class="nav-link">./projects</a>
-                <a href="/Resume - Nitin-Bansal.pdf" class="nav-link">./resume.pdf</a>
-                <a href="#contact" class="nav-link">./contact</a>
+            .skill-chip {
+               @apply bg-card-bg border border-accent-fade text-text-main rounded-xl px-4 py-1.5 text-[0.75rem] font-medium shadow-sm transition-all duration-200 cursor-default select-none;
+               box-shadow: 0 2px 8px rgba(0, 234, 255, 0.04);
+            }
+            .skill-chip:hover,
+            .skill-chip:focus {
+               @apply border-accent bg-bg-2 text-accent shadow-glow outline-none;
+               transform: translateY(-2px) scale(1.04);
+            }
+         }
+         @layer utilities {
+            /* Section title underline custom utility */
+            .section-title-underline::after {
+               content: "";
+               @apply absolute left-0 bottom-[-10px] w-3/5 h-[2px];
+               background: linear-gradient(
+                  to right,
+                  theme("colors.accent"),
+                  transparent
+               );
+            }
+         }
+      </style>
+   </head>
+
+   <body>
+      <!-- ====== Navigation ====== -->
+      <nav
+         class="fixed top-0 left-0 w-full z-50 flex items-center justify-between py-3 px-8 backdrop-blur-lg"
+         style="background-color: rgba(12, 13, 14, 0.7)"
+      >
+         <div
+            class="font-orbitron font-semibold text-xl text-text-main tracking-[1px] relative"
+         >
+            NItin Bansal
+            <span
+               class="inline-block w-1.5 h-1.5 bg-accent ml-1.5 rounded-full animate-pulse"
+            ></span>
+         </div>
+
+         <input type="checkbox" id="nav-toggle" class="hidden peer" />
+         <label
+            for="nav-toggle"
+            class="nav__button block md:hidden w-6 h-[18px] cursor-pointer transition-opacity duration-300 peer-checked:opacity-50"
+         ></label>
+
+         <ul
+            class="hidden md:flex gap-7 list-none peer-checked:flex flex-col md:flex-row absolute md:static top-full right-6 bg-[rgba(12,13,14,0.95)] md:bg-transparent p-6 md:p-0 rounded-lg shadow-lg md:shadow-none gap-y-5"
+         >
+            <li>
+               <a
+                  href="#hero"
+                  class="font-medium text-text-muted no-underline transition-colors duration-300 hover:text-accent focus:text-accent"
+                  >Home</a
+               >
+            </li>
+            <li>
+               <a
+                  href="#experience"
+                  class="font-medium text-text-muted no-underline transition-colors duration-300 hover:text-accent focus:text-accent"
+                  >Experience</a
+               >
+            </li>
+            <li>
+               <a
+                  href="#projects"
+                  class="font-medium text-text-muted no-underline transition-colors duration-300 hover:text-accent focus:text-accent"
+                  >Projects</a
+               >
+            </li>
+            <li>
+               <a
+                  href="#education"
+                  class="font-medium text-text-muted no-underline transition-colors duration-300 hover:text-accent focus:text-accent"
+                  >Education</a
+               >
+            </li>
+            <li>
+               <a
+                  href="https://nitinbansal.space/Resume%20-%20Nitin-Bansal.pdf"
+                  class="font-medium text-text-muted no-underline transition-colors duration-300 hover:text-accent focus:text-accent"
+                  >Resume</a
+               >
+            </li>
+            <li>
+               <a
+                  href="#contact"
+                  class="font-medium text-text-muted no-underline transition-colors duration-300 hover:text-accent focus:text-accent"
+                  >Contact</a
+               >
+            </li>
+         </ul>
+      </nav>
+
+      <!-- ====== Hero ====== -->
+      <header
+         id="hero"
+         class="h-[100vh] flex flex-col items-center text-center pt-40 pb-32 px-6"
+         style="
+            background: linear-gradient(
+               135deg,
+               transparent,
+               rgba(0, 234, 255, 0.05)
+            );
+         "
+      >
+         <h1
+            class="font-orbitron text-[clamp(2.4rem,6vw,4rem)] tracking-[2px] mb-4.5"
+            style="text-shadow: 0 0 12px var(--tw-shadow-color)"
+            class="shadow-accent-fade"
+         >
+            Nitin Bansal
+         </h1>
+         <p class="max-w-[680px] text-text-muted text-lg mb-9">
+            12+ years in distributed systems, technical architecture, and
+            scalable solution design.
+         </p>
+         <ul class="flex flex-wrap justify-center gap-2 mb-4">
+            <li class="skill-chip">Java</li>
+            <li class="skill-chip">Nodejs</li>
+            <li class="skill-chip">Python</li>
+            <li class="skill-chip">BigQuery</li>
+            <li class="skill-chip">Cassandra</li>
+            <li class="skill-chip">MySQL</li>
+            <li class="skill-chip">Redis</li>
+            <li class="skill-chip">Elasticsearch</li>
+            <li class="skill-chip">MongoDB</li>
+            <li class="skill-chip">Kafka</li>
+            <li class="skill-chip">Kubernetes</li>
+            <li class="skill-chip">Docker</li>
+            <li class="skill-chip">AWS</li>
+            <li class="skill-chip">GCP</li>
+            <li class="skill-chip">CI/CD</li>
+         </ul>
+         <p class="text-text-muted text-base mt-10 mb-2">
+            Drove mission-critical architecture and scaled data platforms to <span class="text-accent">billions of events daily</span> at WebEngage.<br>
+            Specialized in <span class="text-accent">real-time analytics</span>, <span class="text-accent">distributed architectures</span>, <span class="text-accent">scalable microservices</span> and <span class="text-accent">cross-team collaboration</span> for high performance.
+        </p>
+
+
+      </header>
+
+      <!-- ====== Experience ====== -->
+      <section
+         id="experience"
+         class="py-24 px-6"
+         style="background-color: rgba(255, 255, 255, 0.02)"
+      >
+         <h2
+            class="font-orbitron text-[1.9rem] tracking-[1px] mb-16 relative inline-block section-title-underline"
+         >
+            Professional Experience
+         </h2>
+
+         <div class="relative ml-4">
+            <div
+               class="absolute left-0 top-0 w-0.5 h-full"
+               style="
+                  background: linear-gradient(
+                     to bottom,
+                     theme(&quot;colors.accent&quot;),
+                     transparent 70%
+                  );
+               "
+            ></div>
+
+            <div class="flex items-start mb-9 relative">
+               <span
+                  class="w-3 h-3 bg-accent rounded-full absolute left-[-6px] top-1 shadow-glow shadow-accent-fade"
+               ></span>
+               <div class="bg-card-bg p-5 rounded-lg w-full shadow-sm ml-5">
+                  <h3 class="mb-1.5 text-lg text-text-main font-semibold">
+                     WebEngage — Principal Engineer
+                  </h3>
+                  <p class="text-text-muted text-sm">
+                     Apr 2022 – Nov 2024 · Mumbai
+                  </p>
+                  <ul
+                     class="list-disc list-inside text-text-muted space-y-2 mt-3"
+                  >
+                     <li>
+                        Led development of multiple projects from ideation to
+                        launch while collaborating cross‑functionally with PM,
+                        QA, CTO, and Devops.
+                     </li>
+                     <li>
+                        Implemented CI/CD pipelines, cutting release cycle time
+                        and improving time‑to‑market.
+                     </li>
+                     <li>
+                        Performed a PoC to migrate our core BigQuery Warehouse
+                        (100+TB) to self-hosted StarRocks.
+                     </li>
+                     <li>
+                        Mentored engineers on best practices in code, docs, and
+                        architectural thinking.
+                     </li>
+                  </ul>
+               </div>
             </div>
-            <button id="mobile-menu-btn" class="md:hidden text-xl">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center justify-center relative">
-        <div class="container mx-auto px-6 text-center">
-            <div class="typewriter fade-in">
-                <h1 class="text-5xl md:text-7xl font-bold mb-6 accent-text">Nitin Bansal</h1>
+            <div class="flex items-start mb-9 relative">
+               <span
+                  class="w-3 h-3 bg-accent rounded-full absolute left-[-6px] top-1 shadow-glow shadow-accent-fade"
+               ></span>
+               <div class="bg-card-bg p-5 rounded-lg w-full shadow-sm ml-5">
+                  <h3 class="mb-1.5 text-lg text-text-main font-semibold">
+                     WebEngage — Sr. Software Engineer
+                  </h3>
+                  <p class="text-text-muted text-sm">
+                     Mar 2013 – Apr 2022 · Mumbai
+                  </p>
+                  <ul
+                     class="list-disc list-inside text-text-muted space-y-2 mt-3"
+                  >
+                     <li>
+                        Built and scaled multiple data‑intensive services
+                        processing billions of events daily (Kafka to BigQuery,
+                        Real-time stats, Attribution, etc).
+                     </li>
+                     <li>
+                        Engineered high-throughput pipelines for user profiles
+                        (800M+ daily updates) and event ingestion (5B+ daily
+                        events).
+                     </li>
+                     <li>
+                        Developed key backend services including reporting, a
+                        latest-event-service using Cassandra, and
+                        personalization engine components.
+                     </li>
+                     <li>
+                        Contributed to frontend development (PHP, Android) for
+                        cross‑functional initiatives.
+                     </li>
+                  </ul>
+               </div>
             </div>
-            <h2 class="text-2xl md:text-3xl text-gray-400 mb-8 fade-in" style="animation-delay: 3.6s;">Principal Software Engineer</h2>
-            <p class="text-lg md:text-xl text-gray-500 mb-12 max-w-3xl mx-auto fade-in" style="animation-delay: 3.7s;">
-                > 12+ years in distributed systems, technical architecture, and scalable solution design.
-            </p>
-        </div>
-    </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-20 max-w-6xl mx-auto">
-        <div class="flex justify-center px-6">
-            <div class="space-y-12 w-full">
-                <div class="tech-card p-8 fade-in-up">
-                    <h2 class="text-3xl font-bold text-center mb-8"><span class="accent-text">//</span> About Me</h2>
-                    <p class="text-xl text-gray-400 mb-8 leading-relaxed text-center">
-                        14+ years of total experience, including 12+ years specializing in distributed systems, technical architecture, and scalable solution design. Strong background in end-to-end project execution and mentorship, with a track record of driving engineering excellence and delivering high-impact solutions.
-                    </p>
-                    <div class="w-1/3 mx-auto h-px my-8 bg-[var(--border-color)]"></div>
-                    <h3 class="text-2xl font-semibold mb-6 accent-text text-center">Technical Skills</h3>
-                    <div class="flex flex-wrap justify-center gap-3">
-                        <span class="skill-tag px-3 py-1 text-sm">Java</span>
-                        <span class="skill-tag px-3 py-1 text-sm">Nodejs</span>
-                        <span class="skill-tag px-3 py-1 text-sm">Python</span>
-                        <span class="skill-tag px-3 py-1 text-sm">BigQuery</span>
-                        <span class="skill-tag px-3 py-1 text-sm">Cassandra</span>
-                        <span class="skill-tag px-3 py-1 text-sm">MySQL</span>
-                        <span class="skill-tag px-3 py-1 text-sm">Redis</span>
-                        <span class="skill-tag px-3 py-1 text-sm">Elasticsearch</span>
-                        <span class="skill-tag px-3 py-1 text-sm">MongoDB</span>
-                        <span class="skill-tag px-3 py-1 text-sm">Kafka</span>
-                        <span class="skill-tag px-3 py-1 text-sm">Kubernetes</span>
-                        <span class="skill-tag px-3 py-1 text-sm">Docker</span>
-                        <span class="skill-tag px-3 py-1 text-sm">AWS</span>
-                        <span class="skill-tag px-3 py-1 text-sm">GCP</span>
-                        <span class="skill-tag px-3 py-1 text-sm">CI/CD</span>
-                    </div>
-                </div>
+            <div class="flex items-start mb-9 relative">
+               <span
+                  class="w-3 h-3 bg-accent rounded-full absolute left-[-6px] top-1 shadow-glow shadow-accent-fade"
+               ></span>
+               <div class="bg-card-bg p-5 rounded-lg w-full shadow-sm ml-5">
+                  <h3 class="mb-1.5 text-lg text-text-main font-semibold">
+                     Apster Technologies
+                  </h3>
+                  <p class="text-text-muted text-sm">
+                     Sep 2011 – Aug 2012 · Mumbai
+                  </p>
+               </div>
             </div>
-        </div>
-    </section>
 
-
-    <!-- Experience Section -->
-    <section id="experience" class="py-20 max-w-6xl mx-auto">
-        <div class="container px-6">
-            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 accent-text">Experience</h2>
-            <div class="mx-auto space-y-8">
-                <div class="fade-in-up tech-card p-8">
-                    <div class="flex flex-col md:flex-row md:justify-between mb-4">
-                        <div>
-                            <h3 class="text-2xl font-semibold accent-text">Principal Software Engineer</h3>
-                            <p class="text-gray-400">WebEngage</p>
-                        </div>
-                        <div class="text-gray-500 text-left md:text-right">
-                            <p>April 2022 - November 2024</p>
-                            <p>Mumbai, India</p>
-                        </div>
-                    </div>
-                    <ul class="list-disc list-inside text-gray-400 space-y-2">
-                        <li>Led development of multiple projects from ideation to launch while collaborating cross‑functionally with PM, QA, CTO, and Devops.</li>
-                        <li>Implemented CI/CD pipelines, cutting release cycle time and improving time‑to‑market.</li>
-                        <li>Performed a PoC to migrate our core BigQuery Warehouse (100+TB) to self-hosted StarRocks.</li>
-                        <li>Mentored engineers on best practices in code, docs, and architectural thinking.</li>
-                    </ul>
-                </div>
-                <div class="fade-in-up tech-card p-8">
-                    <div class="flex flex-col md:flex-row md:justify-between mb-4">
-                        <div>
-                            <h3 class="text-2xl font-semibold accent-text">Senior Software Engineer</h3>
-                            <p class="text-gray-400">WebEngage</p>
-                        </div>
-                        <div class="text-gray-500 text-left md:text-right">
-                            <p>March 2013 - April 2022</p>
-                            <p>Mumbai, India</p>
-                        </div>
-                    </div>
-                    <ul class="list-disc list-inside text-gray-400 space-y-2">
-                        <li>Built and scaled multiple data‑intensive services processing billions of events daily (Kafka to BigQuery, Real-time stats, Attribution, etc).</li>
-                        <li>Engineered high-throughput pipelines for user profiles (800M+ daily updates) and event ingestion (5B+ daily events).</li>
-                        <li>Developed key backend services including reporting, a latest-event-service using Cassandra, and personalization engine components.</li>
-                        <li>Contributed to frontend development (PHP, Android) for cross‑functional initiatives.</li>
-                      </ul>
-                </div>
-                <div class="fade-in-up tech-card p-8">
-                    <div class="flex flex-col md:flex-row md:justify-between mb-4">
-                        <div>
-                            <h3 class="text-2xl font-semibold accent-text">Co-Founder</h3>
-                            <p class="text-gray-400">Apster Technologies Pvt. Ltd.</p>
-                        </div>
-                        <div class="text-gray-500 text-left md:text-right">
-                            <p>September 2011 - August 2012</p>
-                        </div>
-                    </div>
-                </div>
-                 <div class="fade-in-up tech-card p-8">
-                    <div class="flex flex-col md:flex-row md:justify-between mb-4">
-                        <div>
-                            <h3 class="text-2xl font-semibold accent-text">Software Engineer - MMI</h3>
-                            <p class="text-gray-400">Longcheer Technology</p>
-                        </div>
-                        <div class="text-gray-500 text-left md:text-right">
-                            <p>August 2010 - July 2011</p>
-                        </div>
-                    </div>
-                </div>
-                 <div class="fade-in-up tech-card p-8">
-                    <div class="flex flex-col md:flex-row md:justify-between mb-4">
-                        <div>
-                            <h3 class="text-2xl font-semibold accent-text">Embedded Software Developer</h3>
-                            <p class="text-gray-400">Emerson</p>
-                        </div>
-                        <div class="text-gray-500 text-left md:text-right">
-                            <p>February 2009 - March 2010</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="flex items-start mb-9 relative">
+               <span
+                  class="w-3 h-3 bg-accent rounded-full absolute left-[-6px] top-1 shadow-glow shadow-accent-fade"
+               ></span>
+               <div class="bg-card-bg p-5 rounded-lg w-full shadow-sm ml-5">
+                  <h3 class="mb-1.5 text-lg text-text-main font-semibold">
+                     Longcheer Technology
+                  </h3>
+                  <p class="text-text-muted text-sm">
+                     Aug 2010 – Jul 2011 · Mumbai
+                  </p>
+               </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="py-20 max-w-6xl mx-auto">
-        <div class="container px-6">
-            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 accent-text">Personal Projects</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project Card -->
-                <div class="tech-card p-6 flex flex-col fade-in-up">
-                    <h3 class="text-xl font-semibold mb-2 accent-text">ZenQuery</h3>
-                    <p class="text-gray-400 my-4 flex-grow">Desktop app for private, scalable data analysis via plain English. Supports CSV, JSON, Excel, Parquet.</p>
-                    <a href="https://zenquery.app" target="_blank" class="text-sm nav-link self-start">View Project →</a>
-                </div>
-                <!-- Project Card -->
-                <div class="tech-card p-6 flex flex-col fade-in-up">
-                    <h3 class="text-xl font-semibold mb-2 accent-text">DB Stress Bench</h3>
-                    <p class="text-gray-400 my-4 flex-grow">Customizable DB load-testing with real-time in-browser stats. Supports MySQL, Postgres, SQLite, DuckDB, Cassandra.</p>
-                    <a href="https://github.com/freakynit/db-stress-bench" target="_blank" class="text-sm nav-link self-start">View on GitHub →</a>
-                </div>
-                <!-- Project Card -->
-                <div class="tech-card p-6 flex flex-col fade-in-up">
-                    <h3 class="text-xl font-semibold mb-2 accent-text">Blueprint</h3>
-                    <p class="text-gray-400 my-4 flex-grow">Zero-dependency Java 8 templating engine with a Nunjucks-like syntax.</p>
-                    <a href="https://github.com/freakynit/Blueprint" target="_blank" class="text-sm nav-link self-start">View on GitHub →</a>
-                </div>
-                <!-- Project Card -->
-                <div class="tech-card p-6 flex flex-col fade-in-up">
-                    <h3 class="text-xl font-semibold mb-2 accent-text">Guardian</h3>
-                    <p class="text-gray-400 my-4 flex-grow">A Java library for implementing resilient operations using retries, circuit breakers, and fallback strategies.</p>
-                    <a href="https://github.com/freakynit/guardian" target="_blank" class="text-sm nav-link self-start">View on GitHub →</a>
-                </div>
-                <!-- Project Card -->
-                <div class="tech-card p-6 flex flex-col fade-in-up">
-                    <h3 class="text-xl font-semibold mb-2 accent-text">Mock OpenAI Server</h3>
-                    <p class="text-gray-400 my-4 flex-grow">A Node.js Express server that mimics OpenAI API endpoints for local, cost-effective testing of LLM applications.</p>
-                    <a href="https://github.com/freakynit/mock-openai-server" target="_blank" class="text-sm nav-link self-start">View on GitHub →</a>
-                </div>
-                <!-- Project Card -->
-                <div class="tech-card p-6 flex flex-col fade-in-up">
-                    <h3 class="text-xl font-semibold mb-2 accent-text">TinyGraphDB</h3>
-                    <p class="text-gray-400 my-4 flex-grow">A tiny, zero-dependency, disk-based graph database for Node.js with a rich set of graph operations.</p>
-                    <a href="https://github.com/freakynit/tiny-graph-db" target="_blank" class="text-sm nav-link self-start">View on GitHub →</a>
-                </div>
+            <div class="flex items-start relative">
+               <span
+                  class="w-3 h-3 bg-accent rounded-full absolute left-[-6px] top-1 shadow-glow shadow-accent-fade"
+               ></span>
+               <div class="bg-card-bg p-5 rounded-lg w-full shadow-sm ml-5">
+                  <h3 class="mb-1.5 text-lg text-text-main font-semibold">
+                     Emerson
+                  </h3>
+                  <p class="text-text-muted text-sm">
+                     Feb 2009 – Mar 2010 · Mumbai
+                  </p>
+               </div>
             </div>
-        </div>
-    </section>
+         </div>
+      </section>
 
-    <!-- Education Section -->
-    <section id="education" class="py-20 max-w-6xl mx-auto">
-        <div class="container px-6">
-            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 accent-text">Education</h2>
-             <div class="mx-auto space-y-8">
-                <div class="fade-in-up tech-card p-8">
-                    <div class="flex flex-col md:flex-row md:justify-between">
-                        <div>
-                            <h3 class="text-xl font-semibold accent-text">Post Graduate in Embedded Systems</h3>
-                            <p class="text-gray-400">CDAC, Pune</p>
-                        </div>
-                        <div class="text-gray-500">2008 - 2009</div>
-                    </div>
-                </div>
-                <div class="fade-in-up tech-card p-8">
-                    <div class="flex flex-col md:flex-row md:justify-between">
-                        <div>
-                            <h3 class="text-xl font-semibold accent-text">B.Tech in ECE</h3>
-                            <p class="text-gray-400">MJPR University, Bareilly</p>
-                        </div>
-                        <div class="text-gray-500">2004 - 2008</div>
-                    </div>
-                </div>
+      <!-- ====== Projects ====== -->
+      <section id="projects" class="py-24 px-6">
+         <h2
+            class="font-orbitron text-[1.9rem] tracking-[1px] mb-16 relative inline-block section-title-underline"
+         >
+            Featured Projects
+         </h2>
+
+         <div class="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-8">
+            <article
+               class="bg-card-bg p-7 rounded-lg shadow-sm transition-all duration-300 flex flex-col justify-between hover:-translate-y-1.5 hover:shadow-lg hover:shadow-glow hover:shadow-accent-fade"
+            >
+               <div>
+                  <h3 class="text-xl mb-3 text-accent font-semibold">
+                     Private Data Analysis
+                  </h3>
+                  <p class="text-text-muted mb-10">
+                     Plain-English queries over CSV, JSON, Excel, Parquet—no
+                     setup.
+                  </p>
+               </div>
+               <a
+                  href="https://zenquery.app"
+                  class="inline-block py-1.5 px-3 rounded-md font-normal border border-accent text-accent bg-transparent transition-all duration-200 shadow-sm hover:bg-accent hover:text-black hover:shadow-md">
+                  View Project →
+                </a>
+            </article>
+
+            <article
+               class="bg-card-bg p-7 rounded-lg shadow-sm transition-all duration-300 flex flex-col justify-between hover:-translate-y-1.5 hover:shadow-lg hover:shadow-glow hover:shadow-accent-fade"
+            >
+               <div>
+                  <h3 class="text-xl mb-3 text-accent font-semibold">
+                     In-Browser DB Load-Testing
+                  </h3>
+                  <p class="text-text-muted mb-10">
+                     Real-time stats for MySQL, Postgres, SQLite, DuckDB,
+                     Cassandra.
+                  </p>
+               </div>
+               <a
+                  href="https://github.com/freakynit/db-stress-bench"
+                  class="inline-block py-1.5 px-3 rounded-md font-normal border border-accent text-accent bg-transparent transition-all duration-200 shadow-sm hover:bg-accent hover:text-black hover:shadow-md">
+                  GitHub →</a
+               >
+            </article>
+
+            <article
+               class="bg-card-bg p-7 rounded-lg shadow-sm transition-all duration-300 flex flex-col justify-between hover:-translate-y-1.5 hover:shadow-lg hover:shadow-glow hover:shadow-accent-fade"
+            >
+               <div>
+                  <h3 class="text-xl mb-3 text-accent font-semibold">
+                     Java 8 Templating Engine
+                  </h3>
+                  <p class="text-text-muted mb-10">
+                     Zero-dependency, Nunjucks-style syntax for rapid rendering.
+                  </p>
+               </div>
+               <a
+                  href="https://github.com/freakynit/Blueprint"
+                  class="inline-block py-1.5 px-3 rounded-md font-normal border border-accent text-accent bg-transparent transition-all duration-200 shadow-sm hover:bg-accent hover:text-black hover:shadow-md">
+                  GitHub →</a
+               >
+            </article>
+
+            <article
+               class="bg-card-bg p-7 rounded-lg shadow-sm transition-all duration-300 flex flex-col justify-between hover:-translate-y-1.5 hover:shadow-lg hover:shadow-glow hover:shadow-accent-fade"
+            >
+               <div>
+                  <h3 class="text-xl mb-3 text-accent font-semibold">
+                     Resilient Ops Library
+                  </h3>
+                  <p class="text-text-muted mb-10">
+                     Retries, circuit breakers & fallbacks for Java apps.
+                  </p>
+               </div>
+               <a
+                  href="https://github.com/freakynit/guardian"
+                  class="inline-block py-1.5 px-3 rounded-md font-normal border border-accent text-accent bg-transparent transition-all duration-200 shadow-sm hover:bg-accent hover:text-black hover:shadow-md">
+                  GitHub →</a
+               >
+            </article>
+
+            <article
+               class="bg-card-bg p-7 rounded-lg shadow-sm transition-all duration-300 flex flex-col justify-between hover:-translate-y-1.5 hover:shadow-lg hover:shadow-glow hover:shadow-accent-fade"
+            >
+               <div>
+                  <h3 class="text-xl mb-3 text-accent font-semibold">
+                     Local OpenAI Mock API
+                  </h3>
+                  <p class="text-text-muted mb-10">
+                     Node/Express server to test prompts without external calls.
+                  </p>
+               </div>
+               <a
+                  href="https://github.com/freakynit/mock-openai-server"
+                  class="inline-block py-1.5 px-3 rounded-md font-normal border border-accent text-accent bg-transparent transition-all duration-200 shadow-sm hover:bg-accent hover:text-black hover:shadow-md">
+                  GitHub →</a
+               >
+            </article>
+
+            <article
+               class="bg-card-bg p-7 rounded-lg shadow-sm transition-all duration-300 flex flex-col justify-between hover:-translate-y-1.5 hover:shadow-lg hover:shadow-glow hover:shadow-accent-fade"
+            >
+               <div>
+                  <h3 class="text-xl mb-3 text-accent font-semibold">
+                     Tiny Graph DB
+                  </h3>
+                  <p class="text-text-muted mb-10">
+                     Disk-based, zero-dependency graph store for Node.js.
+                  </p>
+               </div>
+               <a
+                  href="https://github.com/freakynit/tiny-graph-db"
+                  class="inline-block py-1.5 px-3 rounded-md font-normal border border-accent text-accent bg-transparent transition-all duration-200 shadow-sm hover:bg-accent hover:text-black hover:shadow-md">
+                  GitHub →</a
+               >
+            </article>
+
+            <article
+               class="bg-card-bg p-7 rounded-lg shadow-sm transition-all duration-300 flex flex-col justify-between hover:-translate-y-1.5 hover:shadow-lg hover:shadow-glow hover:shadow-accent-fade"
+            >
+               <div>
+                  <h3 class="text-xl mb-3 text-accent font-semibold">
+                     Verdict
+                  </h3>
+                  <p class="text-text-muted mb-10">
+                     Java and JavaScript library for evaluating complex conditions on data with MongoDB-like syntax.
+                  </p>
+               </div>
+               <a
+                  href="https://github.com/freakynit/Verdict"
+                  class="inline-block py-1.5 px-3 rounded-md font-normal border border-accent text-accent bg-transparent transition-all duration-200 shadow-sm hover:bg-accent hover:text-black hover:shadow-md">
+                  GitHub →</a
+               >
+            </article>
+         </div>
+      </section>
+
+      <!-- ====== Education ====== -->
+      <section id="education" class="py-24 px-6">
+         <h2
+            class="font-orbitron text-[1.9rem] tracking-[1px] mb-16 relative inline-block section-title-underline"
+         >
+            Education
+         </h2>
+
+         <div class="relative ml-4">
+            <div
+               class="absolute left-0 top-0 w-0.5 h-full"
+               style="
+                  background: linear-gradient(
+                     to bottom,
+                     theme(&quot;colors.accent&quot;),
+                     transparent 70%
+                  );
+               "
+            ></div>
+
+            <div class="flex items-start mb-9 relative">
+               <span
+                  class="w-3 h-3 bg-accent rounded-full absolute left-[-6px] top-1 shadow-glow shadow-accent-fade"
+               ></span>
+               <div class="bg-card-bg p-5 rounded-lg w-full shadow-sm ml-5">
+                  <h3 class="mb-1.5 text-lg text-text-main font-semibold">
+                     CDAC, Pune
+                  </h3>
+                  <p class="text-text-muted text-sm">2008 – 2009</p>
+               </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 max-w-6xl mx-auto">
-        <div class="container px-6 text-center">
-            <h2 class="text-4xl md:text-5xl font-bold mb-8 accent-text">Contact</h2>
-            <p class="text-gray-500 mb-12 max-w-2xl mx-auto">
-                Eager to take on new challenges. Let's connect.
-            </p>
-            <div class="flex justify-center items-center space-x-8 text-3xl">
-                <a href="mailto:nitinbansal85@gmail.com" class="nav-link"><i class="fas fa-envelope"></i></a>
-                <a href="https://linkedin.com/in/nitinbansal85" target="_blank" class="nav-link"><i class="fab fa-linkedin"></i></a>
-                <a href="https://x.com/freakynit" target="_blank" class="nav-link"><i class="fab fa-x-twitter"></i></a>
+            <div class="flex items-start relative">
+               <span
+                  class="w-3 h-3 bg-accent rounded-full absolute left-[-6px] top-1 shadow-glow shadow-accent-fade"
+               ></span>
+               <div class="bg-card-bg p-5 rounded-lg w-full shadow-sm ml-5">
+                  <h3 class="mb-1.5 text-lg text-text-main font-semibold">
+                     MJPR University, Bareilly
+                  </h3>
+                  <p class="text-text-muted text-sm">2004 – 2008</p>
+               </div>
             </div>
-        </div>
-    </section>
+         </div>
+      </section>
 
-    <!-- Footer -->
-    <footer class="py-8 border-t border-[var(--border-color)]">
-        <div class="container mx-auto px-6 text-center">
-            <p class="text-gray-500 text-sm">Nitin Bansal © 2025 | Built with passion and code.</p>
-        </div>
-    </footer>
+      <!-- ====== Contact ====== -->
+      <section
+         id="contact"
+         class="py-24 px-6"
+         style="background-color: rgba(255, 255, 255, 0.02)"
+      >
+         <h2
+            class="font-orbitron text-[1.9rem] tracking-[1px] mb-8 relative inline-block section-title-underline"
+         >
+            <i class="fa-solid fa-paper-plane mr-2"></i>Let’s Connect
+         </h2>
+         <p class="text-text-muted mb-7 text-lg">
+            <i class="fa-solid fa-bolt mr-1"></i>Eager to take on new
+            challenges. Available for consultancy as well.
+         </p>
+         <div class="mt-6 flex gap-4 flex-wrap">
+            <a
+               href="mailto:nitinbansal85@gmail.com"
+               class="inline-flex items-center gap-2 bg-card-bg text-white no-underline font-semibold rounded-lg py-3 px-6 transition-all duration-200 shadow-[0_2px_8px_rgba(37,99,235,0.07)] text-base hover:bg-accent hover:text-black hover:shadow-[0_4px_16px_rgba(37,99,235,0.12)] focus:bg-accent focus:text-black focus:shadow-[0_4px_16px_rgba(37,99,235,0.12)]"
+               target="_blank"
+            >
+               <i class="fa-solid fa-envelope text-lg"></i> Email Me
+            </a>
+            <a
+               href="https://linkedin.com/in/nitinbansal85"
+               class="inline-flex items-center gap-2 bg-card-bg text-white no-underline font-semibold rounded-lg py-3 px-6 transition-all duration-200 shadow-[0_2px_8px_rgba(37,99,235,0.07)] text-base hover:bg-accent hover:text-black hover:shadow-[0_4px_16px_rgba(37,99,235,0.12)] focus:bg-accent focus:text-black focus:shadow-[0_4px_16px_rgba(37,99,235,0.12)]"
+               target="_blank"
+            >
+               <i class="fab fa-linkedin text-lg"></i> LinkedIn
+            </a>
+            <a
+               href="https://x.com/freakynit"
+               class="inline-flex items-center gap-2 bg-card-bg text-white no-underline font-semibold rounded-lg py-3 px-6 transition-all duration-200 shadow-[0_2px_8px_rgba(37,99,235,0.07)] text-base hover:bg-accent hover:text-black hover:shadow-[0_4px_16px_rgba(37,99,235,0.12)] focus:bg-accent focus:text-black focus:shadow-[0_4px_16px_rgba(37,99,235,0.12)]"
+               target="_blank"
+            >
+               <i class="fab fa-x-twitter text-lg"></i> Twitter/X
+            </a>
+         </div>
+      </section>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const nav = document.getElementById('top-nav');
-            const navHeight = nav.offsetHeight;
-            const mobileMenu = document.getElementById('mobile-menu');
-            const mobileMenuButton = document.getElementById('mobile-menu-btn');
-
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', e => {
-                    e.preventDefault();
-                    const targetId = anchor.getAttribute('href');
-                    const target = document.querySelector(targetId);
-                    
-                    if (target) {
-                        const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
-                        const offsetPosition = elementPosition - navHeight;
-                        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                    }
-                    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-                        mobileMenu.classList.add('hidden');
-                    }
-                });
-            });
-
-            mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
-        });
-    </script>
-</body>
+      <!-- ====== Footer ====== -->
+      <footer
+         class="text-center py-10 px-6 text-sm text-text-muted bg-[#0a0b0c]"
+      >
+         <p>© 2025 • Built with ❤ and JavaScript</p>
+      </footer>
+   </body>
 </html>
